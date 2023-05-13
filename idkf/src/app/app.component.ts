@@ -14,7 +14,7 @@ import {
     SubjectActions,
     updateSubject,
 } from './store/entities/subject/subject.actions';
-import {loadAllTasks} from './store/entities/task/task.actions';
+import {createTask, loadAllTasks} from './store/entities/task/task.actions';
 
 @Component({
     standalone: true,
@@ -39,6 +39,16 @@ export class AppComponent {
     }
 
     dispatch() {
-        this.store.dispatch(loadAllTasks());
+        this.store.dispatch(createTask({
+            task: {
+                id: 0,
+                status: 1,
+                subjectId: 0,
+                name: 'Do',
+                deadline: '0123',
+                description: 'stuff',
+                maxGrade: 10,
+            },
+        }));
     }
 }
