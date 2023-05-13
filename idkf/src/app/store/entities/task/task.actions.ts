@@ -7,6 +7,8 @@ import {Subject} from '../subject/subject.model';
 export const loadAllTasks = createAction('Load Tasks');
 export const errorTasks = createAction('Error Tasks', props<{ error: any }>());
 export const createTask = createAction('Create Task', props<{ task: Task }>());
+export const updateTask = createAction('Update Task', props<{ task: Task }>());
+
 
 export const TaskActions = createActionGroup({
     source: 'Task/API',
