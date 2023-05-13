@@ -1,0 +1,8 @@
+<mat-card class="my-card" *ngFor="let subject of subjects">
+    <mat-card-content class="card-container">
+        <div class="name">{{subject.name}}</div>
+        <div class="description">{{subject.description}}</div>
+        <div class="maxGrade">{{subject.maxGrade}}</div>
+        <div class="deadline">{{getFormattedDate(subject.deadline)}}</div>
+    </mat-card-content>
+</mat-card>
