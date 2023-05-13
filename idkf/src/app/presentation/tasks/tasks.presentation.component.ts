@@ -10,7 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
     standalone: true,
     imports: [CommonModule, MatCardModule, NgForOf, MatIconModule],
     templateUrl: './tasks.presentation.component.html',
-    styleUrls: ['./tasks.presentation.component.css'],
+    styleUrls: ['./tasks.presentation.component.scss'],
 })
 export class TasksPresentationComponent {
     @Input() tasks: Task[] = [{
@@ -19,24 +19,27 @@ export class TasksPresentationComponent {
         description: 'Курсова робота',
         deadline: '2023-05-15T20:20:28.349Z',
         maxGrade: 10,
-        status: 1,
+        status: 0,
         subjectId: 1,
     },
         {
             id: 2,
             name: 'Інженерія програмного забезпечення',
             description: 'Its like, not important',
-            deadline: '2023-05-13T15:12:28.349Z',
+            deadline: '2023-05-13T22:12:28.349Z',
             maxGrade: 9,
-            status: 0,
+            status: 1,
             subjectId: 1,
         },
-    ];
-
-    statuses = [
-        {name: 'clear', class: 'red'},
-        {name: 'menu', class: 'yellow'},
-        {name: 'check', class: 'green'},
+        {
+            id: 3,
+            name: 'Архітектра компютерів',
+            description: 'Лабораторна робота № 5',
+            deadline: '2023-05-20T15:12:28.349Z',
+            maxGrade: 6,
+            status: 1,
+            subjectId: 1,
+        },
     ];
 
     isDeadlineApproaching(deadline: string): boolean {
@@ -47,10 +50,14 @@ export class TasksPresentationComponent {
         return timeDiff <= TWO_DAYS_IN_MS;
     }
 
+    isOverdue(deadline: string): boolean {
+        const deadlineDate = new Date(deadline);
+        return deadlineDate.getTime() < Date.now();
+    }
     getFormattedDate(deadline: string): string {
         const taskDeadline = new Date(deadline);
         const month = taskDeadline.getMonth() + 1;
         const day = taskDeadline.getDate();
-        return `${month}/${day}`;
+        return `${day}/${month}`;
     }
 }

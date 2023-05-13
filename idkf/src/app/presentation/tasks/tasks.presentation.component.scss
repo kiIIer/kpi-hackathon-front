@@ -1,40 +1,55 @@
-@import '~@angular/material/theming';
-
 .my-card{
-
-    margin: 20px;
-
+    display: flex;
+    margin: 20px 20px 16px;
 }
+
 .card-container{
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: row;
+    align-items: center;
 }
-
+.card-container.overdue {
+    background-color: rgb(244, 67, 54, 0.6);
+}
 .name{
-    width: 20%;
+    display: flex;
+    align-items: center;
+    width: 25%;
 }
-
 .description{
-    width: 40%;
+    display: flex;
+    align-items: center;
+    width: 35%;
 }
-
 .deadline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 10%;
 }
-
 .maxGrade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+.status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 10%;
 }
 
 .redStatus{
-    background-color: red;
+    background-color: rgb(244, 67, 54);
 }
 .red{
-    color: red;
+    color: rgb(244, 67, 54);
 }
-
-.yellow{
-    color: yellow;
+.green{
+    color: rgb(105, 240, 174);
+}
+.purple{
+    color: rgb(164, 56, 182);
 }

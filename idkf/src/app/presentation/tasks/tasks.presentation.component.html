@@ -1,15 +1,15 @@
-<mat-card>
-    <mat-card-content class="card-container" *ngFor="let task of tasks">
+<mat-card class="my-card" *ngFor="let task of tasks">
+    <mat-card-content class="card-container" [class.overdue]="task.status !== 1 && isDeadlineApproaching(task.deadline)">
         <div class="name">{{task.name}}</div>
         <div class="description">{{task.description}}</div>
-        <div class="deadline" [ngClass]="{'redStatus': isDeadlineApproaching(task.deadline)}">
-            {{getFormattedDate(task.deadline) }}
+        <div class="deadline">
+            {{getFormattedDate(task.deadline)}}
         </div>
         <div class="maxGrade">0/{{task.maxGrade}}</div>
-        <!--Add menu to change status-->
         <div class="status">
-            <mat-icon [ngClass]="statuses[task.status].class">{{statuses[task.status].name}}</mat-icon>
+            <mat-icon *ngIf="task.status === 1" class="green">done</mat-icon>
+            <mat-icon *ngIf="task.status !== 1 && isOverdue(task.deadline)" class="red">clear</mat-icon>
+            <mat-icon *ngIf="task.status !== 1 && !isOverdue(task.deadline)" class="purple">schedule</mat-icon>
         </div>
     </mat-card-content>
 </mat-card>
-
