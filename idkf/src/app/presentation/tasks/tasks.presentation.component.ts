@@ -17,7 +17,7 @@ export class TasksPresentationComponent {
         id: 1,
         name: 'Системне програмування',
         description: 'Курсова робота',
-        deadline: '2023-05-15T20:20:28.349Z',
+        deadline: '2023-05-12T20:20:28.349Z',
         maxGrade: 10,
         status: 0,
         subjectId: 1,
