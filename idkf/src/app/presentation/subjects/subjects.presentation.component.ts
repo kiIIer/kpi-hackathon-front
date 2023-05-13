@@ -9,7 +9,7 @@ import {Subject} from "../../store/entities/subject/subject.model";
   standalone: true,
   imports: [CommonModule, MatCardModule, MatIconModule],
   templateUrl: './subjects.component.html',
-  styleUrls: ['./subjects.component.css'],
+  styleUrls: ['./subjects.presentation.component.css'],
 })
 
 export class SubjectsComponent {
