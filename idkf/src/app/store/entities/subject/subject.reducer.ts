@@ -5,9 +5,7 @@ import { SubjectActions } from './subject.actions';
 
 export const subjectsFeatureKey = 'subjects';
 
-export interface State extends EntityState<Subject> {
-  // additional entities state properties
-}
+export type State = EntityState<Subject>
 
 export const adapter: EntityAdapter<Subject> = createEntityAdapter<Subject>();
 

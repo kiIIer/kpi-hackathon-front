@@ -1,4 +1,4 @@
-import {ApplicationConfig} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, isDevMode} from '@angular/core';
 import {
     provideRouter,
     withEnabledBlockingInitialNavigation,
@@ -7,6 +7,14 @@ import {appRoutes} from './app.routes';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideAuth0} from '@auth0/auth0-angular';
 import {HttpClient, HttpClientModule, provideHttpClient} from '@angular/common/http';
+import {provideStoreDevtools, StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {provideStore, StoreModule} from '@ngrx/store';
+import {reducers} from './store/reducers';
+import {EffectsModule, provideEffects} from '@ngrx/effects';
+import {AppEffects} from './store/app.effects';
+import * as fromTask from './store/entities/task/task.reducer';
+import * as fromSubject from './store/entities/subject/subject.reducer';
+import {SubjectsEffects} from './store/effects/subjects/subjects.effects';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -21,5 +29,14 @@ export const appConfig: ApplicationConfig = {
             },
         }),
         provideHttpClient(),
+        importProvidersFrom(
+            StoreModule.forRoot(reducers),
+            EffectsModule.forRoot([AppEffects]),
+            StoreModule.forFeature(fromTask.tasksFeatureKey, fromTask.reducer),
+            StoreModule.forFeature(fromSubject.subjectsFeatureKey, fromSubject.reducer),
+            EffectsModule.forFeature([SubjectsEffects]),
+            isDevMode() ? StoreDevtoolsModule.instrument() : [],
+        ),
+        // provideStoreDevtools(),
     ],
 };
