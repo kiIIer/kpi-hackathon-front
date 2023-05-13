@@ -1,3 +1,10 @@
+@import '~@angular/material/theming';
+
+.my-card{
+
+    margin: 20px;
+
+}
 .card-container{
     display: flex;
     flex-direction: row;
