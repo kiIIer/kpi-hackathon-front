@@ -15,6 +15,7 @@ import {AppEffects} from './store/app.effects';
 import * as fromTask from './store/entities/task/task.reducer';
 import * as fromSubject from './store/entities/subject/subject.reducer';
 import {SubjectsEffects} from './store/effects/subjects/subjects.effects';
+import {TaskEffects} from './store/effects/task/task.effects';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -34,7 +35,7 @@ export const appConfig: ApplicationConfig = {
             EffectsModule.forRoot([AppEffects]),
             StoreModule.forFeature(fromTask.tasksFeatureKey, fromTask.reducer),
             StoreModule.forFeature(fromSubject.subjectsFeatureKey, fromSubject.reducer),
-            EffectsModule.forFeature([SubjectsEffects]),
+            EffectsModule.forFeature([SubjectsEffects, TaskEffects]),
             isDevMode() ? StoreDevtoolsModule.instrument() : [],
         ),
         // provideStoreDevtools(),
