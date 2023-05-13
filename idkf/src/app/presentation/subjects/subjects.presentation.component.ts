@@ -8,11 +8,11 @@ import {Subject} from "../../store/entities/subject/subject.model";
   selector: 'idkf-subjects',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatIconModule],
-  templateUrl: './subjects.component.html',
+  templateUrl: './subjects.presentation.component.html',
   styleUrls: ['./subjects.presentation.component.css'],
 })
 
-export class SubjectsComponent {
+export class SubjectsPresentationComponent {
   @Input() subjects: Subject[] = [{
     id: 1,
     name: 'Системне програмування',
