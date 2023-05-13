@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TaskService} from './tasks/tasks.service';
+import {TasksService} from './tasks/tasks.service';
 import {HttpClientModule} from '@angular/common/http';
 import {SubjectService} from './subjects/subjects.service';
 

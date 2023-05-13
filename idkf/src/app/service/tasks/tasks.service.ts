@@ -6,7 +6,7 @@ import {Task} from '../../store/entities/task/task.model';
 @Injectable({
     providedIn: 'root',
 })
-export class TaskService {
+export class TasksService {
     private baseUrl = 'http://localhost:8080/api/Task';
 
     constructor(private http: HttpClient) {
@@ -39,6 +39,7 @@ export class TaskService {
 
     // Get task by ID (mock implementation)
     getTaskById(id: number): Observable<HttpResponse<Task>> {
+        console.log('getTaskById ' + id);
         const mockTask: Task = {
             id: 1,
             name: 'Mock Task',
@@ -60,6 +61,8 @@ export class TaskService {
 
     // Update task by ID (mock implementation)
     updateTaskById(id: number, updatedTask: Task): Observable<HttpResponse<Task>> {
+        console.log('updateTaskById' + id);
+        console.log(updatedTask);
         const mockUpdatedTask: Task = {
             ...updatedTask,
             id: id,
@@ -76,6 +79,7 @@ export class TaskService {
 
     // Delete task by ID (mock implementation)
     deleteTaskById(id: number): Observable<HttpResponse<void>> {
+        console.log('deleteTaskById' + id);
         const response: HttpResponse<void> = new HttpResponse({
             body: undefined,
             status: 200,
@@ -87,6 +91,7 @@ export class TaskService {
 
     // Get all tasks (mock implementation)
     getTasks(): Observable<HttpResponse<Task[]>> {
+        console.log('getTasks');
         const mockTasks: Task[] = [
             {
                 id: 1,
@@ -119,6 +124,8 @@ export class TaskService {
 
     // Create a new task (mock implementation)
     createTask(newTask: Task): Observable<HttpResponse<Task>> {
+        console.log('createTask');
+        console.log(newTask);
         const mockCreatedTask: Task = {
             ...newTask,
             id: 3, // Generate a unique ID for the mock task
