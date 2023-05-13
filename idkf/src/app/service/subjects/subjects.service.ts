@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Subject} from '../../store/entities/subject/subject.model';
 
 @Injectable({
@@ -30,7 +30,22 @@ export class SubjectService {
 
     // Without tasks
     getSubjects(): Observable<HttpResponse<Subject[]>> {
-        return this.http.get<Subject[]>(this.baseUrl, {observe: 'response'});
+        const mockData: Subject[] = [
+            {id: 1, name: 'Subject 1', description: 'Description 1', maxGrade: 100, deadline: '1234'},
+            {id: 2, name: 'Subject 2', description: 'Description 2', maxGrade: 90, deadline: '4321'},
+            // Add more mock subjects as needed
+        ];
+
+        // Create an HttpResponse object with the mock data
+        const response: HttpResponse<Subject[]> = new HttpResponse({
+            body: mockData,
+            status: 200,
+            statusText: 'OK',
+        });
+
+        // Return the mock data as an observable
+        return of(response);
+        // return this.http.get<Subject[]>(this.baseUrl, {observe: 'response'});
     }
 
     // Without tasks
