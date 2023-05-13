@@ -5,6 +5,15 @@ import {MainPageComponent} from './presentation/main-page/main-page.component';
 import {MatButtonModule} from '@angular/material/button';
 import {TaskService} from './service/tasks/tasks.service';
 import {AuthService} from '@auth0/auth0-angular';
+import {Store} from '@ngrx/store';
+import {subjectsFeature} from './store/entities/subject/subject.reducer';
+import {
+    createSubject,
+    deleteSubject,
+    initSubjects,
+    SubjectActions,
+    updateSubject,
+} from './store/entities/subject/subject.actions';
 
 @Component({
     standalone: true,
@@ -16,11 +25,46 @@ import {AuthService} from '@auth0/auth0-angular';
 export class AppComponent {
     title = 'idkf';
 
-    constructor(public auth: AuthService) {
+    constructor(public auth: AuthService, private store: Store) {
     }
 
     printUserData() {
         this.auth.user$.forEach((u) => console.log(u));
-        this.auth.getAccessTokenSilently().forEach((t)=>console.log(t))
+        this.auth.getAccessTokenSilently().forEach((t) => console.log(t));
+    }
+
+    testStore() {
+        this.store.select(subjectsFeature.selectAll).forEach((a) => console.log(a));
+    }
+
+    dispatch() {
+        // this.store.dispatch(SubjectActions.addSubject({
+        //     subject: {
+        //         id: 1,
+        //         name: 'Name',
+        //         description: 'description',
+        //         deadline: '1234',
+        //         maxGrade: 10,
+        //     },
+        // }));
+        this.store.dispatch(createSubject({
+            subject: {
+                id: 1,
+                name: 'Name2',
+                description: 'description',
+                deadline: '1234',
+                maxGrade: 10,
+            },
+        }));
+        this.store.dispatch(updateSubject({
+            subject: {
+                id: 1,
+                name: 'Name',
+                description: 'description',
+                deadline: '1234',
+                maxGrade: 10,
+            },
+        }));
+        this.store.dispatch(deleteSubject({id: 1}));
     }
 }
