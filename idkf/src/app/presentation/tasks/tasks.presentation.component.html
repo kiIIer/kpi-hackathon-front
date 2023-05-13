@@ -2,8 +2,10 @@
     <mat-card-content class="card-container" *ngFor="let task of tasks">
         <div class="name">{{task.name}}</div>
         <div class="description">{{task.description}}</div>
-        <div class="deadline">{{task.deadline}}</div>
-        <div class="maxGrade">{{task.maxGrade}}</div>
+        <div class="deadline" [ngClass]="{'redStatus': isDeadlineApproaching(task.deadline)}">
+            {{getFormattedDate(task.deadline) }}
+        </div>
+        <div class="maxGrade">0/{{task.maxGrade}}</div>
         <!--Add menu to change status-->
         <div class="status">
             <mat-icon [ngClass]="statuses[task.status].class">{{statuses[task.status].name}}</mat-icon>

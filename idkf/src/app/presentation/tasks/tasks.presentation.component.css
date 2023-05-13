@@ -1,6 +1,8 @@
 .card-container{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .name{
@@ -19,6 +21,9 @@
     width: 10%;
 }
 
+.redStatus{
+    background-color: red;
+}
 .red{
     color: red;
 }
