@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import * as fromTask from './entities/task/task.reducer';
 import * as fromSubject from './entities/subject/subject.reducer';
+import { SubjectsEffects } from './subjects/effects/subjects.effects';
 
 
 
@@ -18,7 +19,8 @@ import * as fromSubject from './entities/subject/subject.reducer';
     isDevMode() ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
     StoreModule.forFeature(fromTask.tasksFeatureKey, fromTask.reducer),
-    StoreModule.forFeature(fromSubject.subjectsFeatureKey, fromSubject.reducer)
+    StoreModule.forFeature(fromSubject.subjectsFeatureKey, fromSubject.reducer),
+    EffectsModule.forFeature([SubjectsEffects])
   ]
 })
 export class AppStoreModule { }
