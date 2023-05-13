@@ -1,0 +1,28 @@
+.card-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.name{
+    width: 20%;
+}
+
+.description{
+    width: 40%;
+}
+
+.deadline{
+    width: 10%;
+}
+
+.maxGrade{
+    width: 10%;
+}
+
+.red{
+    color: red;
+}
+
+.yellow{
+    color: yellow;
+}
