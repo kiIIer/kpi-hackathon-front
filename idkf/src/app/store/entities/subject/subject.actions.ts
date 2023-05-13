@@ -5,6 +5,7 @@ import {Subject} from './subject.model';
 
 export const initSubjects = createAction('Init Subjects');
 export const errorSubjects = createAction('Error Subjects', props<{ error: any }>());
+export const createSubject = createAction('Create Subject', props<{ subject: Subject }>());
 
 export const SubjectActions = createActionGroup({
     source: 'Subject/API',
