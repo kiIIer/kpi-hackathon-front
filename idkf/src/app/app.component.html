@@ -1,3 +1,4 @@
-<idkf-main-page>
-        <router-outlet></router-outlet>
-</idkf-main-page>
+<button mat-button (click)="auth.loginWithRedirect()">Log in</button>
+<button mat-button (click)="auth.logout()">Log out</button>
+<button mat-button (click)="printUserData()">Get token</button>
+<router-outlet></router-outlet>
