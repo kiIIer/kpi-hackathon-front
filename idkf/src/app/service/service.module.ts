@@ -11,7 +11,6 @@ import {SubjectService} from './subjects/subjects.service';
         CommonModule,
         HttpClientModule,
     ],
-    providers: [TaskService, HttpClientModule, SubjectService],
 })
 export class ServiceModule {
 }
