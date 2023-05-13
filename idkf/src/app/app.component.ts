@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
-  standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'idkf-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+    standalone: true,
+    imports: [RouterModule, MatProgressSpinnerModule],
+    selector: 'idkf-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'idkf';
+    title = 'idkf';
 }
