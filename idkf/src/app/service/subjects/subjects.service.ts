@@ -23,7 +23,7 @@ export class SubjectService {
         return this.http.put<Subject>(url, updatedSubject, {observe: 'response'});
     }
 
-    deleteSubjectById(id: number): Observable<HttpResponse<void>> {
+    deleteSubjectById(id: string): Observable<HttpResponse<void>> {
         const url = `${this.baseUrl}/${id}`;
         return this.http.delete<void>(url, {observe: 'response'});
     }

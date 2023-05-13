@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {SubjectService} from '../../../service/subjects/subjects.service';
 import {
-    createSubject,
+    createSubject, deleteSubject,
     errorSubjects,
     initSubjects,
     SubjectActions,
@@ -52,6 +52,17 @@ export class SubjectsEffects {
                         : errorSubjects({error: response.statusText}),
                     ),
                 ),
+            ),
+        ),
+    );
+
+    deleteSubject$ = this.actions$.pipe(
+        ofType(deleteSubject),
+        mergeMap((action) =>
+            this.subjectsService.deleteSubjectById(action.id).pipe(
+                map((response) => response.ok
+                    ? SubjectActions.deleteSubject({id: action.id})
+                    : errorSubjects({error: response.statusText})),
             ),
         ),
     );
