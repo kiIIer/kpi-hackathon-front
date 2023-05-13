@@ -17,6 +17,7 @@ export class TaskService {
         return this.http.get<Task>(url);
     }
 
+    // Will return new
     updateTaskById(id: number, updatedTask: Task): Observable<Task> {
         const url = `${this.baseUrl}/${id}`;
         return this.http.put<Task>(url, updatedTask);
