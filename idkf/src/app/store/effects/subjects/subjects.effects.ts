@@ -56,13 +56,14 @@ export class SubjectsEffects {
         ),
     );
 
-    deleteSubject$ = this.actions$.pipe(
-        ofType(deleteSubject),
-        mergeMap((action) =>
-            this.subjectsService.deleteSubjectById(action.id).pipe(
-                map((response) => response.ok
-                    ? SubjectActions.deleteSubject({id: action.id})
-                    : errorSubjects({error: response.statusText})),
+    deleteSubject$ = createEffect(() => this.actions$.pipe(
+            ofType(deleteSubject),
+            mergeMap((action) =>
+                this.subjectsService.deleteSubjectById(action.id).pipe(
+                    map((response) => response.ok
+                        ? SubjectActions.deleteSubject({id: action.id})
+                        : errorSubjects({error: response.statusText})),
+                ),
             ),
         ),
     );

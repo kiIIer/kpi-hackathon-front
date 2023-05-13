@@ -7,7 +7,13 @@ import {TaskService} from './service/tasks/tasks.service';
 import {AuthService} from '@auth0/auth0-angular';
 import {Store} from '@ngrx/store';
 import {subjectsFeature} from './store/entities/subject/subject.reducer';
-import {createSubject, initSubjects, SubjectActions} from './store/entities/subject/subject.actions';
+import {
+    createSubject,
+    deleteSubject,
+    initSubjects,
+    SubjectActions,
+    updateSubject,
+} from './store/entities/subject/subject.actions';
 
 @Component({
     standalone: true,
@@ -42,13 +48,23 @@ export class AppComponent {
         //     },
         // }));
         this.store.dispatch(createSubject({
-                subject: {
-                    id: 1,
-                    name: 'Name',
-                    description: 'description',
-                    deadline: '1234',
-                    maxGrade: 10,
-                },
+            subject: {
+                id: 1,
+                name: 'Name2',
+                description: 'description',
+                deadline: '1234',
+                maxGrade: 10,
+            },
         }));
+        this.store.dispatch(updateSubject({
+            subject: {
+                id: 1,
+                name: 'Name',
+                description: 'description',
+                deadline: '1234',
+                maxGrade: 10,
+            },
+        }));
+        this.store.dispatch(deleteSubject({id: 1}));
     }
 }
