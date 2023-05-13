@@ -1,0 +1,15 @@
+<mat-card class="my-card" *ngFor="let task of tasks">
+    <mat-card-content class="card-container" [class.overdue]="task.status !== 1 && isDeadlineApproaching(task.deadline)">
+        <div class="name">{{task.name}}</div>
+        <div class="description">{{task.description}}</div>
+        <div class="deadline">
+            {{getFormattedDate(task.deadline)}}
+        </div>
+        <div class="maxGrade">0/{{task.maxGrade}}</div>
+        <div class="status">
+            <mat-icon *ngIf="task.status === 1" class="green">done</mat-icon>
+            <mat-icon *ngIf="task.status !== 1 && isOverdue(task.deadline)" class="red">clear</mat-icon>
+            <mat-icon *ngIf="task.status !== 1 && !isOverdue(task.deadline)" class="purple">schedule</mat-icon>
+        </div>
+    </mat-card-content>
+</mat-card>

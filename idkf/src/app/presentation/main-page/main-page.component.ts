@@ -6,7 +6,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {async, Observable} from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {map, shareReplay} from 'rxjs/operators';
 
 @Component({
@@ -21,6 +21,7 @@ import {map, shareReplay} from 'rxjs/operators';
         MatListModule,
         MatIconModule,
         AsyncPipe,
+        NgIf,
     ],
 })
 export class MainPageComponent {
