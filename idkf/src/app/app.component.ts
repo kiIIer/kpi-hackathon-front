@@ -41,34 +41,10 @@ export class AppComponent {
     }
 
     dispatch() {
-        this.store.dispatch(createTask({
-            task: {
-                id: 0,
-                status: 1,
-                subjectId: 0,
-                name: 'Do',
-                deadline: '0123',
-                description: 'stuff',
-                maxGrade: 10,
-            },
-        }));
-
-        this.store.dispatch(updateTask({
-            task: {
-                id: 3,
-                status: 1,
-                subjectId: 0,
-                name: 'Doing stuffy stuff',
-                deadline: '0123',
-                description: 'stuff',
-                maxGrade: 10,
-            },
-        }));
-
-        this.store.dispatch(deleteTask({id: 3}))
+        this.store.dispatch(loadAllTasks());
     }
 
-    goto(){
-        this.store.dispatch(goToUrl({url:'/subjects'}))
+    goto() {
+        this.store.dispatch(goToUrl({url: '/all-tasks'}));
     }
 }
