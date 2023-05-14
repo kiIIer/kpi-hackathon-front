@@ -3,7 +3,7 @@ import {RouterModule} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MainPageComponent} from './presentation/main-page/main-page.component';
 import {MatButtonModule} from '@angular/material/button';
-import {TaskService} from './service/tasks/tasks.service';
+import {TasksService} from './service/tasks/tasks.service';
 import {AuthService} from '@auth0/auth0-angular';
 import {Store} from '@ngrx/store';
 import {subjectsFeature} from './store/entities/subject/subject.reducer';
@@ -14,6 +14,7 @@ import {
     SubjectActions,
     updateSubject,
 } from './store/entities/subject/subject.actions';
+import {createTask, deleteTask, loadAllTasks, updateTask} from './store/entities/task/task.actions';
 
 @Component({
     standalone: true,
@@ -38,33 +39,30 @@ export class AppComponent {
     }
 
     dispatch() {
-        // this.store.dispatch(SubjectActions.addSubject({
-        //     subject: {
-        //         id: 1,
-        //         name: 'Name',
-        //         description: 'description',
-        //         deadline: '1234',
-        //         maxGrade: 10,
-        //     },
-        // }));
-        this.store.dispatch(createSubject({
-            subject: {
-                id: 1,
-                name: 'Name2',
-                description: 'description',
-                deadline: '1234',
+        this.store.dispatch(createTask({
+            task: {
+                id: 0,
+                status: 1,
+                subjectId: 0,
+                name: 'Do',
+                deadline: '0123',
+                description: 'stuff',
                 maxGrade: 10,
             },
         }));
-        this.store.dispatch(updateSubject({
-            subject: {
-                id: 1,
-                name: 'Name',
-                description: 'description',
-                deadline: '1234',
+
+        this.store.dispatch(updateTask({
+            task: {
+                id: 3,
+                status: 1,
+                subjectId: 0,
+                name: 'Doing stuffy stuff',
+                deadline: '0123',
+                description: 'stuff',
                 maxGrade: 10,
             },
         }));
-        this.store.dispatch(deleteSubject({id: 1}));
+
+        this.store.dispatch(deleteTask({id: 3}))
     }
 }
