@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MainPageComponent} from './presentation/main-page/main-page.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,6 +15,7 @@ import {
     updateSubject,
 } from './store/entities/subject/subject.actions';
 import {createTask, deleteTask, loadAllTasks, updateTask} from './store/entities/task/task.actions';
+import {goToUrl} from './store/router/router.action';
 
 @Component({
     standalone: true,
@@ -26,7 +27,7 @@ import {createTask, deleteTask, loadAllTasks, updateTask} from './store/entities
 export class AppComponent {
     title = 'idkf';
 
-    constructor(public auth: AuthService, private store: Store) {
+    constructor(public auth: AuthService, private store: Store, private router: Router) {
     }
 
     printUserData() {
@@ -64,5 +65,9 @@ export class AppComponent {
         }));
 
         this.store.dispatch(deleteTask({id: 3}))
+    }
+
+    goto(){
+        this.store.dispatch(goToUrl({url:'/subjects'}))
     }
 }
