@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 import {selectCurrentTask} from '../../store/entities/task/task.reducer';
 
 @Component({
-    selector: 'idkf-task-editor.container',
+    selector: 'idkf-task-editor-container',
     standalone: true,
     imports: [CommonModule],
     templateUrl: './task-editor.container.component.html',
