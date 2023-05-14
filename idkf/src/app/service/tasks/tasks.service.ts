@@ -104,7 +104,7 @@ export class TasksService {
                 deadline: '2023-05-13T12:06:17.584Z',
                 description: 'Mock Task 1 Description',
                 maxGrade: 100,
-                status: 0,
+                status: 1,
             },
             {
                 id: 2,

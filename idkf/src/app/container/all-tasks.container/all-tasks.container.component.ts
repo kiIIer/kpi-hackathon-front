@@ -6,6 +6,7 @@ import {Task} from '../../store/entities/task/task.model';
 import {selectAll} from '../../store/entities/task/task.reducer';
 import {TasksPresentationComponent} from '../../presentation/tasks/tasks.presentation.component';
 import {goToUrl} from '../../store/router/router.action';
+import {updateTask} from '../../store/entities/task/task.actions';
 
 @Component({
     selector: 'idkf-all-tasks-container',
@@ -17,6 +18,10 @@ import {goToUrl} from '../../store/router/router.action';
 export class AllTasksContainerComponent {
     allTasks$: Observable<Task[]>;
 
+    update(task: Task){
+        this.store.dispatch(updateTask({task: task}))
+    }
+
     constructor(private store: Store) {
         this.allTasks$ = this.store.select(selectAll);
     }
@@ -24,6 +29,4 @@ export class AllTasksContainerComponent {
     go(url: string) {
         this.store.dispatch(goToUrl({url: url}));
     }
-
-    protected readonly event = event;
 }
