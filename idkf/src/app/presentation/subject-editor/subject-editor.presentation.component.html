@@ -1,48 +1,50 @@
-<mat-card>
-    <form [formGroup]="subjectForm" (submit)="submit()">
-        <mat-card-header>
-            <mat-card-title>
-                <mat-form-field>
-                    <mat-label>Name</mat-label>
+<div class="subject-editor">
+    <mat-card class="my-card-main">
+        <form [formGroup]="subjectForm" (submit)="submit()">
+            <mat-card-header class="my-card-name">
+                <mat-card-title>
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <textarea matInput
+                                  cdkTextareaAutosize
+                                  formControlName="name"
+                                  required></textarea>
+                        <mat-error *ngIf="subjectForm!.controls['name'].touched && subjectForm!.controls['name'].invalid">
+                            <span *ngIf="subjectForm!.controls['name'].errors!['required']">This field is mandatory.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="my-card-dmd">
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
                     <textarea matInput
                               cdkTextareaAutosize
-                              formControlName="name"
-                              required></textarea>
-                    <mat-error *ngIf="subjectForm!.controls['name'].touched && subjectForm!.controls['name'].invalid">
-                        <span *ngIf="subjectForm!.controls['name'].errors!['required']">This field is mandatory.</span>
+                              formControlName="description"></textarea>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Max points</mat-label>
+                    <input matInput type="number" formControlName="maxGrade">
+                    <mat-error
+                            *ngIf="subjectForm!.controls['maxGrade'].touched && subjectForm!.controls['maxGrade'].invalid">
+                        <span *ngIf="subjectForm!.controls['maxGrade'].errors!['required']">This field is mandatory.</span>
                     </mat-error>
                 </mat-form-field>
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-form-field appearance="fill">
-                <mat-label>Description</mat-label>
-                <textarea matInput
-                          cdkTextareaAutosize
-                          formControlName="description"></textarea>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Max points</mat-label>
-                <input matInput type="number" formControlName="maxGrade">
-                <mat-error
-                        *ngIf="subjectForm!.controls['maxGrade'].touched && subjectForm!.controls['maxGrade'].invalid">
-                    <span *ngIf="subjectForm!.controls['maxGrade'].errors!['required']">This field is mandatory.</span>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Deadline</mat-label>
-                <input matInput formControlName="deadline">
-                <mat-error
-                        *ngIf="subjectForm!.controls['deadline'].touched && subjectForm!.controls['deadline'].invalid">
-                    <span *ngIf="subjectForm!.controls['deadline'].errors!['required']">This field is mandatory.</span>
-                </mat-error>
-            </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions class="actions">
-            <button mat-raised-button
-                    color="primary"
-                    type="submit">Save
-            </button>
-        </mat-card-actions>
-    </form>
-</mat-card>
+                <mat-form-field appearance="fill">
+                    <mat-label>Deadline</mat-label>
+                    <input matInput formControlName="deadline">
+                    <mat-error
+                            *ngIf="subjectForm!.controls['deadline'].touched && subjectForm!.controls['deadline'].invalid">
+                        <span *ngIf="subjectForm!.controls['deadline'].errors!['required']">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions class="actions">
+                <button mat-raised-button
+                        color="primary"
+                        type="submit">Save
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
