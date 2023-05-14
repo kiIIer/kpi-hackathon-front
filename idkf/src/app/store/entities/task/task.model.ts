@@ -3,7 +3,7 @@ export interface Task {
   subjectId: number;
   deadline: string;
   description: string;
-  maxGrade: number;
+  grade: number;
   status: number;
   id: number;
 }
