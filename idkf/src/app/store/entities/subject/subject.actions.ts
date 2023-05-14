@@ -9,6 +9,8 @@ export const createSubject = createAction('Create Subject', props<{ subject: Sub
 export const updateSubject = createAction('Update Subject', props<{ subject: Subject }>());
 export const deleteSubject = createAction('Delete Subject', props<{ id: number }>());
 
+export const loadSubjectById = createAction('Load Subject By Id', props<{ id: number }>());
+
 export const SubjectActions = createActionGroup({
     source: 'Subject/API',
     events: {

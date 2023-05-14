@@ -21,7 +21,7 @@ import {map} from 'rxjs/operators';
 })
 export class TaskEditorPresentationComponent implements OnInit {
     @Input() currentTask: Task | undefined | null;
-    @Input() currentSubjectId: number | undefined | null;
+    @Input() currentSubject: Subject | undefined | null;
     @Input() subjects: Subject[] | undefined | null;
     @Output() submitEventer: EventEmitter<Task>;
 
@@ -61,11 +61,11 @@ export class TaskEditorPresentationComponent implements OnInit {
             ['description']: [this.currentTask ? this.currentTask.description : ''],
             ['maxGrade']: [this.currentTask ? this.currentTask.maxGrade : '', Validators.required],
             ['deadline']: [this.currentTask ? this.currentTask.deadline : '', Validators.required],
-            ['subjectName']: [this.currentSubjectId ? this.subjects?.find(subject => subject.id === this.currentSubjectId)?.name : '', Validators.required],
+            ['subjectName']: [this.currentSubject ? this.currentSubject.name : '', Validators.required],
         });
 
         this.filteredOptions = this.taskForm.controls['subjectName'].valueChanges.pipe(
-            startWith(''),
+            startWith(this.currentSubject ? this.currentSubject.name : ''),
             map(value => this._filter(value || '')),
         );
     }

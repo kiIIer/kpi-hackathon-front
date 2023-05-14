@@ -4,7 +4,7 @@ import {SubjectService} from '../../../service/subjects/subjects.service';
 import {
     createSubject, deleteSubject,
     errorSubjects,
-    initSubjects,
+    initSubjects, loadSubjectById,
     SubjectActions,
     updateSubject,
 } from '../../entities/subject/subject.actions';
@@ -62,6 +62,18 @@ export class SubjectsEffects {
                 this.subjectsService.deleteSubjectById(action.id).pipe(
                     map((response) => response.ok
                         ? SubjectActions.deleteSubject({id: action.id})
+                        : errorSubjects({error: response.statusText})),
+                ),
+            ),
+        ),
+    );
+
+    loadSubjectById$ = createEffect(() => this.actions$.pipe(
+            ofType(loadSubjectById),
+            mergeMap((action) =>
+                this.subjectsService.getSubjectById(action.id).pipe(
+                    map((response) => response.ok
+                        ? SubjectActions.addSubject({subject: response.body!})
                         : errorSubjects({error: response.statusText})),
                 ),
             ),

@@ -19,13 +19,13 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./task-editor.container.component.css'],
 })
 export class TaskEditorContainerComponent {
-    currentSubjectId$: Observable<number | undefined>;
+    currentSubject$: Observable<Subject | undefined>;
     subjects$: Observable<Subject[]>;
     currentTask$: Observable<Task | undefined>;
 
     constructor(private store: Store) {
         this.currentTask$ = this.store.select(selectCurrentTask);
-        this.currentSubjectId$ = this.store.select(selectRouteParams).pipe(map((params) => params['subjectId']));
+        this.currentSubject$ = this.store.select(selectCurrentSubject);
         this.subjects$ = this.store.select(selectAll);
     }
 
