@@ -1,1 +1,3 @@
-<p>subject-editor.container works!</p>
+<idkf-subject-editor-presentation
+        [currentSubject]="currentSubject$ | async"
+        (submitEventer)="onSubmit($event)"></idkf-subject-editor-presentation>
