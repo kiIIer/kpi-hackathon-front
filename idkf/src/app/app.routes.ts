@@ -12,7 +12,7 @@ export const appRoutes: Routes = [
     {path: 'subjects', component: SubjectsContainerComponent},
     {path: 'subjects/:subjectId/tasks', component: SubjectContainerComponent},
     {path: 'tasks/:taskId', component: TaskEditorContainerComponent},
-    // {path: 'subjects/:subjectId/edit', component: EditSubjectComponent},
+    {path: 'subjects/:subjectId/edit', component: TaskEditorContainerComponent},
     // {path: 'tasks/:taskId/edit', component: EditTaskComponent},
     // {path: 'subjects/create', component: CreateSubjectComponent},
     // {path: 'tasks/create', component: CreateTaskComponent},
