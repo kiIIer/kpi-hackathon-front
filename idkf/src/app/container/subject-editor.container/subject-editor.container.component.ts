@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'load-subject-editor.container',
+  selector: 'idkf-subject-editor-container',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './subject-editor.container.component.html',
