@@ -1,4 +1,4 @@
-import {createFeature, createReducer, on} from '@ngrx/store';
+import {createFeature, createReducer, createSelector, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 import {Task} from './task.model';
 import {TaskActions} from './task.actions';
@@ -61,3 +61,9 @@ export const {
     selectAll,
     selectTotal,
 } = tasksFeature;
+
+export const selectTasksBySubjectId = (subjectId: number) =>
+    createSelector(
+        selectAll,
+        (tasks: Task[]) => tasks.filter(task => task.subjectId === subjectId),
+    );
