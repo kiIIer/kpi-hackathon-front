@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'idkf-all-tasks.container',
+  selector: 'idkf-all-tasks-container',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './all-tasks.container.component.html',
