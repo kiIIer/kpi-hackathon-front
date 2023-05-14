@@ -24,7 +24,7 @@ export class TasksService {
     }
 
     updateTaskById(id: number, updatedTask: Task): Observable<HttpResponse<Task>> {
-        const url = `${this.baseUrl}/${id}`;
+        const url = `http://localhost:7097/api/subjects/${updatedTask.subjectId}/tasks/${id}`;
         return this.authService.getAccessTokenSilently().pipe(
             switchMap(token => {
                 const headers = this.getHeadersWithAuthToken(token);
@@ -56,13 +56,13 @@ export class TasksService {
         return this.authService.getAccessTokenSilently().pipe(
             switchMap(token => {
                 const headers = this.getHeadersWithAuthToken(token);
-                return this.http.post<Task>(this.baseUrl, newTask, { headers, observe: 'response' });
+                return this.http.post<Task>(`http://localhost:7097/api/subjects/${newTask.subjectId}/tasks`, newTask, { headers, observe: 'response' });
             })
         );
     }
 
     getTasksOfSubjectById(subjectId: number): Observable<HttpResponse<Task[]>> {
-        const url = `$http://localhost:7097/api/subjects/${subjectId}/tasks`;
+        const url = `http://localhost:7097/api/subjects/${subjectId}/tasks`;
         return this.authService.getAccessTokenSilently().pipe(
             switchMap(token => {
                 const headers = this.getHeadersWithAuthToken(token);

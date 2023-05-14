@@ -23,7 +23,7 @@ export class SubjectsEffects {
                 this.subjectsService.getSubjects().pipe(
                     map((response) =>
                         response.ok
-                            ? SubjectActions.loadSubjects({subjects: response.body!})
+                            ? SubjectActions.upsertSubjects({subjects: response.body!})
                             : errorSubjects({error: response.statusText}),
                     ),
                 ),
@@ -36,7 +36,7 @@ export class SubjectsEffects {
             mergeMap((action) =>
                 this.subjectsService.createSubject(action.subject).pipe(
                     map((response) => response.ok
-                        ? SubjectActions.addSubject({subject: response.body!})
+                        ? SubjectActions.upsertSubject({subject: response.body!})
                         : errorSubjects({error: response.statusText})),
                 ),
             ),
@@ -48,7 +48,7 @@ export class SubjectsEffects {
             mergeMap((action) =>
                 this.subjectsService.updateSubjectById(action.subject.id, action.subject).pipe(
                     map((response) => response.ok
-                        ? SubjectActions.updateSubject({subject: {id: response.body!.id, changes: response.body!}})
+                        ? SubjectActions.upsertSubject({subject: response.body!})
                         : errorSubjects({error: response.statusText}),
                     ),
                 ),
@@ -73,7 +73,7 @@ export class SubjectsEffects {
             mergeMap((action) =>
                 this.subjectsService.getSubjectById(action.id).pipe(
                     map((response) => response.ok
-                        ? SubjectActions.addSubject({subject: response.body!})
+                        ? SubjectActions.upsertSubject({subject: response.body!})
                         : errorSubjects({error: response.statusText})),
                 ),
             ),

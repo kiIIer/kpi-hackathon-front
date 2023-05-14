@@ -9,7 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {Observable, of, startWith} from 'rxjs';
+import {Observable, of, startWith, take} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';

@@ -11,6 +11,7 @@ import {
 } from '../../entities/task/task.actions';
 import {map, mergeMap} from 'rxjs/operators';
 import {deleteSubject, errorSubjects, loadSubjectById, SubjectActions} from '../../entities/subject/subject.actions';
+import {tap} from 'rxjs';
 
 
 @Injectable()
@@ -20,7 +21,7 @@ export class TaskEffects {
             ofType(loadAllTasks),
             mergeMap(() => this.tasksService.getTasks().pipe(
                     map((response) => response.ok
-                        ? TaskActions.loadTasks({tasks: response.body!})
+                        ? TaskActions.upsertTasks({tasks: response.body!})
                         : errorTasks({error: response.statusText})),
                 ),
             ),
@@ -30,8 +31,9 @@ export class TaskEffects {
     createTask$ = createEffect(() => this.actions$.pipe(
             ofType(createTask),
             mergeMap((action) => this.tasksService.createTask(action.task).pipe(
+                    tap((response) => console.log(response)),
                     map((response) => response.ok
-                        ? TaskActions.addTask({task: response.body!})
+                        ? TaskActions.upsertTask({task: response.body!})
                         : errorTasks({error: response.statusText})),
                 ),
             ),
@@ -41,8 +43,9 @@ export class TaskEffects {
     updateTask$ = createEffect(() => this.actions$.pipe(
             ofType(updateTask),
             mergeMap((action) => this.tasksService.updateTaskById(action.task.id, action.task).pipe(
+                    tap((response) => console.log(response)),
                     map((response) => response.ok
-                        ? TaskActions.updateTask({task: {id: response.body!.id, changes: response.body!}})
+                        ? TaskActions.upsertTask({task: response.body!})
                         : errorTasks({error: response.statusText}),
                     ),
                 ),
@@ -67,7 +70,7 @@ export class TaskEffects {
             mergeMap((action) =>
                 this.tasksService.getTasksOfSubjectById(action.subjectId).pipe(
                     map((response) => response.ok
-                        ? TaskActions.addTasks({tasks: response.body!})
+                        ? TaskActions.upsertTasks({tasks: response.body!})
                         : errorTasks({error: response.statusText})),
                 ),
             ),
@@ -79,7 +82,7 @@ export class TaskEffects {
             mergeMap((action) =>
                 this.tasksService.getTaskById(action.id).pipe(
                     map((response) => response.ok
-                        ? TaskActions.addTask({task: response.body!})
+                        ? TaskActions.upsertTask({task: response.body!})
                         : errorTasks({error: response.statusText})),
                 ),
             ),
