@@ -37,6 +37,8 @@ export class AppComponent {
     title = 'idkf';
 
     constructor(public auth: AuthService, private store: Store, private router: Router) {
+        this.store.dispatch(initSubjects());
+        this.store.dispatch(loadAllTasks());
     }
 
     li() {
