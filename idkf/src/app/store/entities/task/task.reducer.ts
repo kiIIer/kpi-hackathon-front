@@ -67,9 +67,19 @@ export const selectFilteredTasks = createSelector(
     selectRouteParams, // Select the route params
     selectAll, // Select all tasks
     (routeParams, tasks) => {
-        console.log(routeParams)
+        console.log(routeParams);
         const subjectId = parseInt(routeParams['subjectId'], 10); // Parse the subjectId as an integer
-        console.log(subjectId)
+        console.log(subjectId);
         return tasks.filter(task => task.subjectId === subjectId); // Filter tasks by subjectId
-    }
+    },
+);
+
+export const selectCurrentTask = createSelector(
+    selectRouteParams, // Select the route params
+    selectEntities, // Select the task entities dictionary
+    (routeParams, taskEntities) => {
+        const taskId = parseInt(routeParams['taskId'], 10); // Parse the subjectId as an integer
+
+        return taskEntities[taskId];
+    },
 );
