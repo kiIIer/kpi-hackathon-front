@@ -10,11 +10,16 @@
             {{getFormattedDate(task.deadline)}}
         </div>
         <div class="maxGrade">0/{{task.maxGrade}}</div>
-        <div class="status">
-            <mat-icon *ngIf="task.status === 1" class="green">done</mat-icon>
-            <mat-icon *ngIf="task.status !== 1 && isOverdue(task.deadline)" class="red">clear</mat-icon>
-            <mat-icon *ngIf="task.status !== 1 && !isOverdue(task.deadline)" class="purple">schedule</mat-icon>
-        </div>
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon [ngClass]="status_l[task.status].color">{{status_l[task.status].icon}}</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <ng-container *ngFor="let status of status_l; let i = index">
+                <button mat-menu-item *ngIf="i !== task.status" (click)="updateEventer.emit(changeTask(task, i))">
+                    <mat-icon [ngClass]="status.color">{{ status.icon }}</mat-icon>
+                </button>
+            </ng-container>
+        </mat-menu>
         <button mat-icon-button
                 (click)="navEventer.emit('/subjects/' + task.subjectId + '/tasks/' + task.id + '/edit')">
             <mat-icon>edit</mat-icon>
