@@ -23,6 +23,7 @@ import {
 } from './store/entities/task/task.actions';
 import {MainContainerComponent} from './container/main.container/main.container.component';
 import {goToUrl} from './store/router/router.action';
+import {login, logout} from './store/entities/auth/auth.actions';
 
 @Component({
     standalone: true,
@@ -35,6 +36,14 @@ export class AppComponent {
     title = 'idkf';
 
     constructor(public auth: AuthService, private store: Store, private router: Router) {
+    }
+
+    li() {
+        this.store.dispatch(login());
+    }
+
+    lo() {
+        this.store.dispatch(logout());
     }
 
     printUserData() {
