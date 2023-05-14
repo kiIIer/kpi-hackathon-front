@@ -22,11 +22,9 @@ export class TasksGuard implements CanActivate {
         const id = parseInt(subjectId, 10);
         return this.store.select(selectFilteredTasks).pipe(
             tap((tasks) => {
-                if (tasks.length == 0) {
                     this.store.dispatch(getTasksBySubjectId({subjectId: id}));
-                }
             }),
-            filter((tasks) => tasks.length != 0),
+            // filter((tasks) => tasks.length != 0),
             map(() => true),
         );
     }

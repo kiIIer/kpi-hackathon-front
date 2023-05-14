@@ -5,12 +5,14 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @Component({
     selector: 'idkf-subject-editor-presentation',
     standalone: true,
-    imports: [CommonModule, MatCardModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
+    imports: [CommonModule, MatNativeDateModule, MatCardModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatDatepickerModule],
     templateUrl: './subject-editor.presentation.component.html',
     styleUrls: ['./subject-editor.presentation.component.css'],
 })
@@ -49,5 +51,6 @@ export class SubjectEditorPresentationComponent implements OnInit {
         } as Subject;
 
         this.submitEventer.emit(subject);
+        this.navEventer.emit('/subjects');
     }
 }

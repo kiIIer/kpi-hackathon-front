@@ -42,29 +42,6 @@ export class AppComponent {
     constructor(public auth: AuthService, private store: Store, private router: Router) {
         this.store.dispatch(checkAuth());
     }
-
-
-    li() {
-        this.store.dispatch(login());
-    }
-
-    lo() {
-        this.store.dispatch(logout());
-    }
-
-    printUserData() {
-        this.auth.user$.forEach((u) => console.log(u));
-        this.auth.getAccessTokenSilently().forEach((t) => console.log(t));
-    }
-
-    testStore() {
-        this.store.select(subjectsFeature.selectAll).forEach((a) => console.log(a));
-    }
-
-    dispatch() {
-        this.store.dispatch(initSubjects());
-    }
-
     goto() {
         this.store.dispatch(goToUrl({url: '/subjects/1'}));
     }

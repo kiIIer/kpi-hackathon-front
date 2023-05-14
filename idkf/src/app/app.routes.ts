@@ -18,7 +18,7 @@ import {TaskGuard} from './guards/task.guard';
 export const appRoutes: Routes = [
     {path: '', redirectTo: '/subjects', pathMatch: 'full'},
     {path: 'tasks', component: AllTasksContainerComponent, canActivate: [AuthGuard, AllTasksGuard]},
-    {path: 'subjects', component: SubjectsContainerComponent, canActivate: [AuthGuard]},
+    {path: 'subjects', component: SubjectsContainerComponent, canActivate: [AuthGuard, AllSubjectsGuard]},
     {path: 'subjects/create', component: SubjectCreatorContainerComponent, canActivate: [AuthGuard]},
     {
         path: 'subjects/:subjectId/edit',

@@ -20,11 +20,9 @@ export class AllSubjectsGuard implements CanActivate {
     check(): Observable<boolean> {
         return this.store.select(selectAll).pipe(
             tap((subjects) => {
-                if (subjects.length == 0) {
                     this.store.dispatch(initSubjects());
-                }
             }),
-            filter((subjects) => subjects.length != 0),
+            // filter((subjects) => subjects.length != 0),
             map(() => true),
         );
     }

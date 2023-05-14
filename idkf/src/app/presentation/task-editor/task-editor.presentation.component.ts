@@ -11,11 +11,13 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {Observable, of, startWith} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
     selector: 'idkf-task-editor-presentation',
     standalone: true,
-    imports: [CommonModule, MatCardModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, TextFieldModule, MatAutocompleteModule],
+    imports: [CommonModule, MatNativeDateModule, MatCardModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, TextFieldModule, MatAutocompleteModule, MatDatepickerModule],
     templateUrl: './task-editor.presentation.component.html',
     styleUrls: ['./task-editor.presentation.component.css'],
 })
@@ -28,6 +30,7 @@ export class TaskEditorPresentationComponent implements OnInit {
 
     filteredOptions: Observable<string[]>;
     taskForm: FormGroup;
+    picker: any;
 
     constructor(private formBuilder: FormBuilder) {
         this.taskForm = formBuilder.group({});
@@ -54,6 +57,7 @@ export class TaskEditorPresentationComponent implements OnInit {
         } as Task;
 
         this.submitEventer.emit(task);
+        this.navEventer.emit('/subjects/' + task.subjectId + '/tasks')
     }
 
     ngOnInit(): void {

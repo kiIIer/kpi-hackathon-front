@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {Task} from '../../store/entities/task/task.model';
 import {selectCurrentTask} from '../../store/entities/task/task.reducer';
 import {updateTask} from '../../store/entities/task/task.actions';
-import {updateSubject} from '../../store/entities/subject/subject.actions';
+import {initSubjects, updateSubject} from '../../store/entities/subject/subject.actions';
 import {selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
 import {Subject} from '../../store/entities/subject/subject.model';
 import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
@@ -31,6 +31,7 @@ export class SubjectEditorContainerComponent {
 
     onSubmit(subject: Subject) {
         this.store.dispatch(updateSubject({subject: subject}));
+        this.store.dispatch(initSubjects())
     }
 
     go(url: string) {

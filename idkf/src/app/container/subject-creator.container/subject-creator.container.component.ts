@@ -5,7 +5,7 @@ import {
     SubjectEditorPresentationComponent,
 } from '../../presentation/subject-editor/subject-editor.presentation.component';
 import {Subject} from '../../store/entities/subject/subject.model';
-import {createSubject} from '../../store/entities/subject/subject.actions';
+import {createSubject, initSubjects} from '../../store/entities/subject/subject.actions';
 import {goToUrl} from '../../store/router/router.action';
 
 @Component({
@@ -21,6 +21,7 @@ export class SubjectCreatorContainerComponent {
 
     onSubmit(subject: Subject) {
         this.store.dispatch(createSubject({subject: subject}));
+        this.store.dispatch(initSubjects());
     }
 
     go(url: string) {

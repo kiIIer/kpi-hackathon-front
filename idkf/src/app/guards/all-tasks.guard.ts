@@ -23,7 +23,7 @@ export class AllTasksGuard implements CanActivate {
             tap((tasks) => {
                 this.store.dispatch(loadAllTasks());
             }),
-            filter((tasks) => tasks.length != 0),
+            // filter((tasks) => tasks.length != 0),
             map(() => true),
         );
     }

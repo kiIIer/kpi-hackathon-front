@@ -23,15 +23,13 @@ export class SubjectGuard implements CanActivate {
         const id = parseInt(subjectId, 10);
         return this.store.select(selectIds).pipe(
             tap((ids) => {
-                console.log(id)
-                console.log(ids)
-                if (!(ids as number[]).includes(id)) {
+                // if (!(ids as number[]).includes(id)) {
                     this.store.dispatch(loadSubjectById({id: id}));
-                }
+                // }
             }),
-            filter((ids) => {
-                return (ids as number[]).includes(id);
-            }),
+            // filter((ids) => {
+            //     return (ids as number[]).includes(id);
+            // }),
             map(() => true),
         );
 
