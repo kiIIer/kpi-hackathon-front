@@ -9,6 +9,7 @@ export const errorTasks = createAction('Error Tasks', props<{ error: any }>());
 export const createTask = createAction('Create Task', props<{ task: Task }>());
 export const updateTask = createAction('Update Task', props<{ task: Task }>());
 export const deleteTask = createAction('Delete Task', props<{ id: number }>());
+export const getTasksBySubjectId = createAction('Get Tasks by Subject', props<{ subjectId: number }>());
 
 
 export const TaskActions = createActionGroup({
