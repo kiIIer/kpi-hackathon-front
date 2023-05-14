@@ -15,6 +15,7 @@ import {
     updateSubject,
 } from './store/entities/subject/subject.actions';
 import {createTask, deleteTask, loadAllTasks, updateTask} from './store/entities/task/task.actions';
+import {goToUrl} from './store/router/router.action';
 
 @Component({
     standalone: true,
@@ -67,6 +68,6 @@ export class AppComponent {
     }
 
     goto(){
-        this.router.navigateByUrl("/subjects")
+        this.store.dispatch(goToUrl({url:'/subjects'}))
     }
 }
