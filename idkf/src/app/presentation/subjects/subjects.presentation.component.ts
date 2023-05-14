@@ -1,13 +1,14 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {Subject} from "../../store/entities/subject/subject.model";
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'idkf-subjects-presentation',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './subjects.presentation.component.html',
   styleUrls: ['./subjects.presentation.component.css'],
 })
@@ -35,6 +36,7 @@ export class SubjectsPresentationComponent {
       deadline: '2023-05-20T15:12:28.349Z',
     },
   ];
+  @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
 
   getFormattedDate(deadline: string): string {
     const taskDeadline = new Date(deadline);

@@ -1,3 +1,4 @@
 <idkf-subject-editor-presentation
         [currentSubject]="currentSubject$ | async"
+        (navEventer)="go($event)"
         (submitEventer)="onSubmit($event)"></idkf-subject-editor-presentation>

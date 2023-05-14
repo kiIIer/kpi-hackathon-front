@@ -10,6 +10,7 @@ import {Subject} from '../../store/entities/subject/subject.model';
 import {selectAll, selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
 import {selectRouteParams} from '../../store/router/router.selectors';
 import {map} from 'rxjs/operators';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-task-editor-container',
@@ -31,5 +32,9 @@ export class TaskEditorContainerComponent {
 
     onSubmit(task: Task) {
         this.store.dispatch(updateTask({task: task}));
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }

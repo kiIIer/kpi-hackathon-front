@@ -1,5 +1,9 @@
+<button mat-icon-button color="accent" (click)="navEventer.emit('/tasks/create')">
+    <mat-icon>add</mat-icon>
+</button>
 <mat-card class="my-card" *ngFor="let task of tasks">
-    <mat-card-content class="card-container" [class.overdue]="task.status !== 1 && isDeadlineApproaching(task.deadline)">
+    <mat-card-content class="card-container"
+                      [class.overdue]="task.status !== 1 && isDeadlineApproaching(task.deadline)">
         <div class="name">{{task.name}}</div>
         <div class="description">{{task.description}}</div>
         <div class="deadline">
@@ -11,5 +15,9 @@
             <mat-icon *ngIf="task.status !== 1 && isOverdue(task.deadline)" class="red">clear</mat-icon>
             <mat-icon *ngIf="task.status !== 1 && !isOverdue(task.deadline)" class="purple">schedule</mat-icon>
         </div>
+        <button mat-icon-button
+                (click)="navEventer.emit('/subjects/' + task.subjectId + '/tasks/' + task.id + '/edit')">
+            <mat-icon>edit</mat-icon>
+        </button>
     </mat-card-content>
 </mat-card>

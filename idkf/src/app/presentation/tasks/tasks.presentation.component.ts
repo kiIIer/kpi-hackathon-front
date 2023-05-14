@@ -1,14 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {Task} from '../../store/entities/task/task.model';
 import {NgForOf} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
     selector: 'idkf-tasks-presentation',
     standalone: true,
-    imports: [CommonModule, MatCardModule, NgForOf, MatIconModule],
+    imports: [CommonModule, MatCardModule, NgForOf, MatIconModule, MatButtonModule],
     templateUrl: './tasks.presentation.component.html',
     styleUrls: ['./tasks.presentation.component.scss'],
 })
@@ -41,6 +42,7 @@ export class TasksPresentationComponent {
             subjectId: 1,
         },
     ];
+    @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
 
     isDeadlineApproaching(deadline: string): boolean {
         const TWO_DAYS_IN_MS = 2 * 24 * 60 * 60 * 1000;

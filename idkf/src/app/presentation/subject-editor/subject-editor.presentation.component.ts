@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 export class SubjectEditorPresentationComponent implements OnInit {
     @Input() currentSubject: Subject | undefined | null;
     @Output() submitEventer: EventEmitter<Subject>;
+    @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
 
     subjectForm: FormGroup;
 

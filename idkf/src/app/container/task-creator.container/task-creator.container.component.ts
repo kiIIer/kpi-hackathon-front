@@ -9,6 +9,7 @@ import {selectAll, selectCurrentSubject} from '../../store/entities/subject/subj
 import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
 import {selectRouteParams} from '../../store/router/router.selectors';
 import {map} from 'rxjs/operators';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-task-creator-container',
@@ -26,5 +27,9 @@ export class TaskCreatorContainerComponent {
 
     onSubmit(task: Task) {
         this.store.dispatch(createTask({task: task}));
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }

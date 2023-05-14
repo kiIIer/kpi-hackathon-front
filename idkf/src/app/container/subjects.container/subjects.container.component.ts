@@ -5,6 +5,7 @@ import {Subject} from '../../store/entities/subject/subject.model';
 import {Observable} from 'rxjs';
 import {selectAll} from '../../store/entities/subject/subject.reducer';
 import {SubjectsPresentationComponent} from '../../presentation/subjects/subjects.presentation.component';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-subjects-container',
@@ -18,5 +19,9 @@ export class SubjectsContainerComponent {
 
     constructor(private store: Store) {
         this.subjects$ = this.store.select(selectAll);
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }
