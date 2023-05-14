@@ -2,6 +2,7 @@ import {createFeature, createReducer, createSelector, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 import {Task} from './task.model';
 import {TaskActions} from './task.actions';
+import {selectRouteParams} from '../../router/router.selectors';
 
 export const tasksFeatureKey = 'tasks';
 
@@ -62,8 +63,11 @@ export const {
     selectTotal,
 } = tasksFeature;
 
-export const selectTasksBySubjectId = (subjectId: number) =>
-    createSelector(
-        selectAll,
-        (tasks: Task[]) => tasks.filter(task => task.subjectId === subjectId),
-    );
+export const selectFilteredTasks = createSelector(
+    selectRouteParams, // Select the route params
+    selectAll, // Select all tasks
+    (routeParams, tasks) => {
+        const subjectId = routeParams['id']; // Get the subjectId from the route params
+        return tasks.filter(task => task.subjectId === subjectId); // Filter tasks by subjectId
+    },
+);
