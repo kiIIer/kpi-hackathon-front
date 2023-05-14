@@ -14,7 +14,7 @@ import {
     SubjectActions,
     updateSubject,
 } from './store/entities/subject/subject.actions';
-import {createTask, loadAllTasks, updateTask} from './store/entities/task/task.actions';
+import {createTask, deleteTask, loadAllTasks, updateTask} from './store/entities/task/task.actions';
 
 @Component({
     standalone: true,
@@ -62,5 +62,7 @@ export class AppComponent {
                 maxGrade: 10,
             },
         }));
+
+        this.store.dispatch(deleteTask({id: 3}))
     }
 }

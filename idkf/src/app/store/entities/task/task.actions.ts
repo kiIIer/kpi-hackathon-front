@@ -8,6 +8,7 @@ export const loadAllTasks = createAction('Load Tasks');
 export const errorTasks = createAction('Error Tasks', props<{ error: any }>());
 export const createTask = createAction('Create Task', props<{ task: Task }>());
 export const updateTask = createAction('Update Task', props<{ task: Task }>());
+export const deleteTask = createAction('Delete Task', props<{ id: number }>());
 
 
 export const TaskActions = createActionGroup({
@@ -20,8 +21,8 @@ export const TaskActions = createActionGroup({
         'Upsert Tasks': props<{ tasks: Task[] }>(),
         'Update Task': props<{ task: Update<Task> }>(),
         'Update Tasks': props<{ tasks: Update<Task>[] }>(),
-        'Delete Task': props<{ id: string }>(),
-        'Delete Tasks': props<{ ids: string[] }>(),
+        'Delete Task': props<{ id: number }>(),
+        'Delete Tasks': props<{ ids: number[] }>(),
         'Clear Tasks': emptyProps(),
     },
 });
