@@ -10,7 +10,7 @@
             <div class="deadline">
                 {{getFormattedDate(task.deadline)}}
             </div>
-            <div class="maxGrade">0/{{task.maxGrade}}</div>
+            <div class="maxGrade">0/{{task.grade}}</div>
             <button mat-button [matMenuTriggerFor]="menu">
                 <mat-icon [ngClass]="status_l[task.status].color">{{status_l[task.status].icon}}</mat-icon>
             </button>

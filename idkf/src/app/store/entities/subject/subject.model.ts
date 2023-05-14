@@ -2,7 +2,7 @@ export interface Subject {
     id: number;
     name: string;
     description: string;
-    maxGrade: number;
+    grade: number;
     deadline: string;
 }
 

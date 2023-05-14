@@ -23,11 +23,11 @@
                               formControlName="description"></textarea>
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="my-card-form-element">
-                    <mat-label>Max points</mat-label>
+                    <mat-label>Points</mat-label>
                     <input matInput type="number" formControlName="maxGrade">
                     <mat-error
-                            *ngIf="taskForm!.controls['maxGrade'].touched && taskForm!.controls['maxGrade'].invalid">
-                        <span *ngIf="taskForm!.controls['maxGrade'].errors!['required']">This field is mandatory.</span>
+                            *ngIf="taskForm!.controls['grade'].touched && taskForm!.controls['grade'].invalid">
+                        <span *ngIf="taskForm!.controls['grade'].errors!['required']">This field is mandatory.</span>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="my-card-form-element">

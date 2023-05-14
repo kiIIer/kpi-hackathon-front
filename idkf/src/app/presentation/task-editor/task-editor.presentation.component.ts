@@ -48,7 +48,7 @@ export class TaskEditorPresentationComponent implements OnInit {
             ...this.currentTask,
             name: this.taskForm.value.name,
             description: this.taskForm.value.description,
-            maxGrade: this.taskForm.value.maxGrade,
+            grade: this.taskForm.value.grade,
             deadline: this.taskForm.value.deadline,
             subjectId: subjectId,
         } as Task;
@@ -60,7 +60,7 @@ export class TaskEditorPresentationComponent implements OnInit {
         this.taskForm = this.formBuilder.group({
             ['name']: [this.currentTask ? this.currentTask.name : '', Validators.required],
             ['description']: [this.currentTask ? this.currentTask.description : ''],
-            ['maxGrade']: [this.currentTask ? this.currentTask.maxGrade : '', Validators.required],
+            ['grade']: [this.currentTask ? this.currentTask.grade : '', Validators.required],
             ['deadline']: [this.currentTask ? this.currentTask.deadline : '', Validators.required],
             ['subjectName']: [this.currentSubject ? this.currentSubject.name : '', Validators.required],
         });

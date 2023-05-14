@@ -30,7 +30,7 @@ export class SubjectEditorPresentationComponent implements OnInit {
         this.subjectForm = this.formBuilder.group({
             ['name']: [this.currentSubject ? this.currentSubject.name : '', Validators.required],
             ['description']: [this.currentSubject ? this.currentSubject.description : ''],
-            ['maxGrade']: [this.currentSubject ? this.currentSubject.maxGrade : '', Validators.required],
+            ['maxGrade']: [this.currentSubject ? this.currentSubject.grade : '', Validators.required],
             ['deadline']: [this.currentSubject ? this.currentSubject.deadline : '', Validators.required],
         });
     }
@@ -44,7 +44,7 @@ export class SubjectEditorPresentationComponent implements OnInit {
             ...this.currentSubject,
             name: this.subjectForm.value.name,
             description: this.subjectForm.value.description,
-            maxGrade: this.subjectForm.value.maxGrade,
+            grade: this.subjectForm.value.maxGrade,
             deadline: this.subjectForm.value.deadline,
         } as Subject;
 
