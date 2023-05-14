@@ -13,7 +13,7 @@ import {Subject} from "../../store/entities/subject/subject.model";
 })
 
 export class SubjectsPresentationComponent {
-  @Input() subjects: Subject[] = [{
+  @Input() subjects: Subject[] | null = [{
     id: 1,
     name: 'Системне програмування',
     description: 'Вчитель: Порєв В. М., залік або автомат',
