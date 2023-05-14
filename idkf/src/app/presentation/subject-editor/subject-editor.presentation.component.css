@@ -1,0 +1,28 @@
+.subject-editor{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-card-main{
+    width: 300px;
+}
+
+.my-card-dmd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-card-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
