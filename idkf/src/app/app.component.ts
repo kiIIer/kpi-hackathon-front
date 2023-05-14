@@ -25,10 +25,11 @@ import {MainContainerComponent} from './container/main.container/main.container.
 import {goToUrl} from './store/router/router.action';
 import {login, logout} from './store/entities/auth/auth.actions';
 import {SubjectEditorContainerComponent} from "./container/subject-editor.container/subject-editor.container.component";
+import {TaskEditorContainerComponent} from "./container/task-editor.container/task-editor.container.component";
 
 @Component({
     standalone: true,
-    imports: [RouterModule, MatProgressSpinnerModule, MainPageComponent, MatButtonModule, MainContainerComponent, SubjectEditorContainerComponent],
+    imports: [RouterModule, MatProgressSpinnerModule, MainPageComponent, MatButtonModule, MainContainerComponent, SubjectEditorContainerComponent, TaskEditorContainerComponent],
     selector: 'idkf-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
