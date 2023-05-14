@@ -16,6 +16,8 @@ import * as fromTask from './store/entities/task/task.reducer';
 import * as fromSubject from './store/entities/subject/subject.reducer';
 import {SubjectsEffects} from './store/effects/subjects/subjects.effects';
 import {TaskEffects} from './store/effects/task/task.effects';
+import {provideRouterStore, routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {RouterEffects} from './store/router/router.effects';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -30,12 +32,16 @@ export const appConfig: ApplicationConfig = {
             },
         }),
         provideHttpClient(),
+        provideStore({
+            router: routerReducer,
+        }),
+        provideRouterStore(),
         importProvidersFrom(
             StoreModule.forRoot(reducers),
             EffectsModule.forRoot([AppEffects]),
             StoreModule.forFeature(fromTask.tasksFeatureKey, fromTask.reducer),
             StoreModule.forFeature(fromSubject.subjectsFeatureKey, fromSubject.reducer),
-            EffectsModule.forFeature([SubjectsEffects, TaskEffects]),
+            EffectsModule.forFeature([SubjectsEffects, TaskEffects, RouterEffects]),
             isDevMode() ? StoreDevtoolsModule.instrument() : [],
         ),
         // provideStoreDevtools(),
