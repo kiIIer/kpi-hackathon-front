@@ -42,6 +42,7 @@ export class SubjectsPresentationComponent {
     const taskDeadline = new Date(deadline);
     const month = taskDeadline.getMonth() + 1;
     const day = taskDeadline.getDate();
-    return `${day}/${month}`;
+    const year = taskDeadline.getFullYear()
+    return `${day}/${month}/${year}`;
   }
 }
