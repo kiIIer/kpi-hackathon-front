@@ -1,14 +1,16 @@
-<button mat-icon-button color="accent" (click)="navEventer.emit('/subjects/create')">
-    <mat-icon>add</mat-icon>
-</button>
-<mat-card class="my-card" *ngFor="let subject of subjects" (click)="navEventer.emit('/subjects/' + subject.id + '/tasks')">
-    <mat-card-content class="card-container">
-        <div class="name">{{subject.name}}</div>
-        <div class="description">{{subject.description}}</div>
-        <div class="maxGrade">{{subject.maxGrade}}</div>
-        <div class="deadline">{{getFormattedDate(subject.deadline)}}</div>
-        <button mat-icon-button (click)="navEventer.emit('/subjects/' + subject.id + '/edit')">
-            <mat-icon>edit</mat-icon>
-        </button>
-    </mat-card-content>
-</mat-card>
+<div class="subject-presentation-main">
+    <button mat-icon-button color="accent" (click)="navEventer.emit('/subjects/create')">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-card class="my-card" *ngFor="let subject of subjects" (click)="navEventer.emit('/subjects/' + subject.id + '/tasks')">
+        <mat-card-content class="card-container">
+            <div class="name">{{subject.name}}</div>
+            <div class="description">{{subject.description}}</div>
+            <div class="maxGrade">{{subject.maxGrade}}</div>
+            <div class="deadline">{{getFormattedDate(subject.deadline)}}</div>
+            <button mat-icon-button (click)="navEventer.emit('/subjects/' + subject.id + '/edit')">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </mat-card-content>
+    </mat-card>
+</div>
