@@ -18,6 +18,7 @@ import {SubjectsEffects} from './store/effects/subjects/subjects.effects';
 import {TaskEffects} from './store/effects/task/task.effects';
 import {provideRouterStore, routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {RouterEffects} from './store/router/router.effects';
+import {AuthEffects} from './store/effects/auth/auth.effects';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -41,7 +42,7 @@ export const appConfig: ApplicationConfig = {
             EffectsModule.forRoot([AppEffects]),
             StoreModule.forFeature(fromTask.tasksFeatureKey, fromTask.reducer),
             StoreModule.forFeature(fromSubject.subjectsFeatureKey, fromSubject.reducer),
-            EffectsModule.forFeature([SubjectsEffects, TaskEffects, RouterEffects]),
+            EffectsModule.forFeature([SubjectsEffects, TaskEffects, RouterEffects, AuthEffects]),
             isDevMode() ? StoreDevtoolsModule.instrument() : [],
         ),
         // provideStoreDevtools(),
