@@ -1,5 +1,12 @@
+.subject-presentation-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .my-card{
     display: flex;
+    width: 90%;
     margin: 20px 20px 16px;
 }
 
