@@ -4,7 +4,7 @@ import {TasksService} from '../../../service/tasks/tasks.service';
 import {
     createTask,
     deleteTask,
-    errorTasks,
+    errorTasks, getTasksBySubjectId,
     loadAllTasks,
     TaskActions,
     updateTask,
@@ -56,6 +56,18 @@ export class TaskEffects {
                 this.tasksService.deleteTaskById(action.id).pipe(
                     map((response) => response.ok
                         ? TaskActions.deleteTask({id: action.id})
+                        : errorTasks({error: response.statusText})),
+                ),
+            ),
+        ),
+    );
+
+    getTasksBySubjectId$ = createEffect(() => this.actions$.pipe(
+            ofType(getTasksBySubjectId),
+            mergeMap((action) =>
+                this.tasksService.getTasksOfSubjectById(action.subjectId).pipe(
+                    map((response) => response.ok
+                        ? TaskActions.addTasks({tasks: response.body!})
                         : errorTasks({error: response.statusText})),
                 ),
             ),
