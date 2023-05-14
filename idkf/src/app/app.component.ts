@@ -47,7 +47,7 @@ export class AppComponent {
     }
 
     dispatch() {
-        this.store.dispatch(getTasksBySubjectId({subjectId: 2}));
+        this.store.dispatch(loadAllTasks());
     }
 
     goto() {
