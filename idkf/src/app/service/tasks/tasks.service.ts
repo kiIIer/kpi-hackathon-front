@@ -139,4 +139,42 @@ export class TasksService {
 
         return of(response);
     }
+
+    getTasksOfSubjectById(subjectId: number): Observable<HttpResponse<Task[]>> {
+        console.log('getTasksOfSubjectById');
+        console.log(subjectId);
+
+        const mockTasks: Task[] = [
+            {
+                id: 1,
+                name: 'Mock Task 1',
+                subjectId: 1,
+                deadline: '2023-05-13T12:06:17.584Z',
+                description: 'Mock Task 1 Description',
+                maxGrade: 100,
+                status: 0,
+            },
+            {
+                id: 2,
+                name: 'Mock Task 2',
+                subjectId: 2,
+                deadline: '2023-05-13T12:06:17.584Z',
+                description: 'Mock Task 2 Description',
+                maxGrade: 90,
+                status: 0,
+            },
+        ];
+
+        const filteredTasks = mockTasks.filter(
+            (task) => task.subjectId === subjectId
+        );
+
+        const response: HttpResponse<Task[]> = new HttpResponse({
+            body: filteredTasks,
+            status: 200,
+            statusText: 'OK',
+        });
+
+        return of(response);
+    }
 }

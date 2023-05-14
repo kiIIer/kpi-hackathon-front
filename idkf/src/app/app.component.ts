@@ -41,7 +41,7 @@ export class AppComponent {
     }
 
     dispatch() {
-        this.store.dispatch(initSubjects());
+        this.store.dispatch(get());
     }
 
     goto() {
