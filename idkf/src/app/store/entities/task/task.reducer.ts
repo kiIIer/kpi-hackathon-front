@@ -67,7 +67,9 @@ export const selectFilteredTasks = createSelector(
     selectRouteParams, // Select the route params
     selectAll, // Select all tasks
     (routeParams, tasks) => {
-        const subjectId = routeParams['subjectId']; // Get the subjectId from the route params
+        console.log(routeParams)
+        const subjectId = parseInt(routeParams['subjectId'], 10); // Parse the subjectId as an integer
+        console.log(subjectId)
         return tasks.filter(task => task.subjectId === subjectId); // Filter tasks by subjectId
-    },
+    }
 );

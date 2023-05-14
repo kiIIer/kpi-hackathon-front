@@ -1,24 +1,26 @@
-import { isDevMode } from '@angular/core';
+import {isDevMode} from '@angular/core';
 import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
+    ActionReducer,
+    ActionReducerMap,
+    createFeatureSelector,
+    createSelector,
+    MetaReducer,
 } from '@ngrx/store';
 import * as fromTask from '../entities/task/task.reducer';
 import * as fromSubject from '../entities/subject/subject.reducer';
+import {routerReducer, RouterReducerState} from '@ngrx/router-store';
 
 
 export interface State {
-  [fromTask.tasksFeatureKey]: fromTask.TaskState;
-  [fromSubject.subjectsFeatureKey]: fromSubject.SubjectState;
+    router: RouterReducerState;
+    [fromTask.tasksFeatureKey]: fromTask.TaskState;
+    [fromSubject.subjectsFeatureKey]: fromSubject.SubjectState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-
-  [fromTask.tasksFeatureKey]: fromTask.reducer,
-  [fromSubject.subjectsFeatureKey]: fromSubject.reducer,
+    router: routerReducer,
+    [fromTask.tasksFeatureKey]: fromTask.reducer,
+    [fromSubject.subjectsFeatureKey]: fromSubject.reducer,
 };
 
 
