@@ -12,7 +12,7 @@ import * as fromSubject from '../entities/subject/subject.reducer';
 
 export interface State {
   [fromTask.tasksFeatureKey]: fromTask.TaskState;
-  [fromSubject.subjectsFeatureKey]: fromSubject.State;
+  [fromSubject.subjectsFeatureKey]: fromSubject.SubjectState;
 }
 
 export const reducers: ActionReducerMap<State> = {
