@@ -5,11 +5,11 @@ import { SubjectActions } from './subject.actions';
 
 export const subjectsFeatureKey = 'subjects';
 
-export type State = EntityState<Subject>
+export type SubjectState = EntityState<Subject>
 
 export const adapter: EntityAdapter<Subject> = createEntityAdapter<Subject>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: SubjectState = adapter.getInitialState({
   // additional entity state properties
 });
 
