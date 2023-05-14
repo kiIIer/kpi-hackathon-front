@@ -6,7 +6,7 @@ import {Task} from '../../store/entities/task/task.model';
 import {selectAll} from '../../store/entities/task/task.reducer';
 import {TasksPresentationComponent} from '../../presentation/tasks/tasks.presentation.component';
 import {goToUrl} from '../../store/router/router.action';
-import {updateTask} from '../../store/entities/task/task.actions';
+import {deleteTask, updateTask} from '../../store/entities/task/task.actions';
 
 @Component({
     selector: 'idkf-all-tasks-container',
@@ -28,5 +28,9 @@ export class AllTasksContainerComponent {
 
     go(url: string) {
         this.store.dispatch(goToUrl({url: url}));
+    }
+
+    delete(task: Task) {
+        this.store.dispatch(deleteTask({id: task.id}));
     }
 }

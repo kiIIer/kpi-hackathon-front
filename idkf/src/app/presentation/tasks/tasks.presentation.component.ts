@@ -18,6 +18,7 @@ export class TasksPresentationComponent {
     @Input() tasks: Task[] | null = [];
     @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
     @Output() updateEventer: EventEmitter<Task> = new EventEmitter<Task>();
+    @Output() deleteEventer: EventEmitter<Task> = new EventEmitter<Task>();
 
     status_l = [{color: 'red', icon: 'clear'}, {color: 'green', icon: 'done'}, {color: 'purple', icon: 'schedule'}];
 
@@ -37,11 +38,12 @@ export class TasksPresentationComponent {
     getFormattedDate(deadline: string): string {
         const taskDeadline = new Date(deadline);
         const month = taskDeadline.getMonth() + 1;
+        const year = taskDeadline.getFullYear();
         const day = taskDeadline.getDate();
-        return `${day}/${month}`;
+        return `${day}/${month}/${year}`;
     }
 
-    changeTask(task: Task, status: number): Task{
-        return ({...task, status: status})
+    changeTask(task: Task, status: number): Task {
+        return ({...task, status: status});
     }
 }

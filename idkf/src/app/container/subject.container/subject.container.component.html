@@ -1,4 +1,5 @@
 <idkf-tasks-presentation
         [tasks]="tasks$ | async"
         (updateEventer)="update($event)"
+        (deleteEventer)="delete($event)"
         (navEventer)="go($event)"></idkf-tasks-presentation>

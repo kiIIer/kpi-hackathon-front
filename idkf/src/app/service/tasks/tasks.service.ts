@@ -34,7 +34,7 @@ export class TasksService {
     }
 
     deleteTaskById(id: number): Observable<HttpResponse<void>> {
-        const url = `${this.baseUrl}/${id}`;
+        const url = `http://localhost:7097/api/tasks/${id}`;
         return this.authService.getAccessTokenSilently().pipe(
             switchMap(token => {
                 const headers = this.getHeadersWithAuthToken(token);
