@@ -9,6 +9,9 @@
     width: 90%;
     margin: 20px 20px 16px;
 }
+.my-card:hover{
+    background-color: rgba(123, 31, 162);
+}
 
 .card-container{
     display: flex;
