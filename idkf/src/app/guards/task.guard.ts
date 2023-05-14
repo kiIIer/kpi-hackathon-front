@@ -23,13 +23,13 @@ export class TaskGuard implements CanActivate {
             tap((ids) => {
                 console.log(id)
                 console.log(ids)
-                if (!(ids as number[]).includes(id)) {
+                // if (!(ids as number[]).includes(id)) {
                     this.store.dispatch(loadTaskById({id: id}));
-                }
+                // }
             }),
-            filter((ids) => {
-                return (ids as number[]).includes(id);
-            }),
+            // filter((ids) => {
+            //     return (ids as number[]).includes(id);
+            // }),
             map(() => true),
         );
 

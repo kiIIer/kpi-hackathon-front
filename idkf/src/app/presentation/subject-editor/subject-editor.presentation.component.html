@@ -9,7 +9,8 @@
                                   cdkTextareaAutosize
                                   formControlName="name"
                                   required></textarea>
-                        <mat-error *ngIf="subjectForm!.controls['name'].touched && subjectForm!.controls['name'].invalid">
+                        <mat-error
+                                *ngIf="subjectForm!.controls['name'].touched && subjectForm!.controls['name'].invalid">
                             <span *ngIf="subjectForm!.controls['name'].errors!['required']">This field is mandatory.</span>
                         </mat-error>
                     </mat-form-field>
@@ -30,9 +31,12 @@
                         <span *ngIf="subjectForm!.controls['maxGrade'].errors!['required']">This field is mandatory.</span>
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill" class="my-card-form-element">
                     <mat-label>Deadline</mat-label>
-                    <input matInput formControlName="deadline">
+                    <input matInput [matDatepicker]="picker" formControlName="deadline">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                     <mat-error
                             *ngIf="subjectForm!.controls['deadline'].touched && subjectForm!.controls['deadline'].invalid">
                         <span *ngIf="subjectForm!.controls['deadline'].errors!['required']">This field is mandatory.</span>

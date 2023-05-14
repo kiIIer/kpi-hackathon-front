@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Task} from '../../store/entities/task/task.model';
-import {updateTask} from '../../store/entities/task/task.actions';
+import {loadAllTasks, updateTask} from '../../store/entities/task/task.actions';
 import {Observable} from 'rxjs';
 import {selectCurrentTask} from '../../store/entities/task/task.reducer';
 import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
@@ -11,6 +11,7 @@ import {selectAll, selectCurrentSubject} from '../../store/entities/subject/subj
 import {selectRouteParams} from '../../store/router/router.selectors';
 import {map} from 'rxjs/operators';
 import {goToUrl} from '../../store/router/router.action';
+import {initSubjects} from '../../store/entities/subject/subject.actions';
 
 @Component({
     selector: 'idkf-task-editor-container',
@@ -28,10 +29,12 @@ export class TaskEditorContainerComponent {
         this.currentTask$ = this.store.select(selectCurrentTask);
         this.currentSubject$ = this.store.select(selectCurrentSubject);
         this.subjects$ = this.store.select(selectAll);
+        this.store.dispatch(initSubjects())
     }
 
     onSubmit(task: Task) {
         this.store.dispatch(updateTask({task: task}));
+        this.store.dispatch(loadAllTasks())
     }
 
     go(url: string) {
