@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -26,6 +26,8 @@ import {map, shareReplay} from 'rxjs/operators';
 })
 export class MainPageComponent {
     private breakpointObserver = inject(BreakpointObserver);
+    @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
+    @Output() logoutEventer: EventEmitter<void> = new EventEmitter<void>();
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
         .pipe(

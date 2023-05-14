@@ -12,6 +12,7 @@ import {TaskEditorPresentationComponent} from '../../presentation/task-editor/ta
 import {
     SubjectEditorPresentationComponent
 } from '../../presentation/subject-editor/subject-editor.presentation.component';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-subject-editor-container',
@@ -30,5 +31,9 @@ export class SubjectEditorContainerComponent {
 
     onSubmit(subject: Subject) {
         this.store.dispatch(updateSubject({subject: subject}));
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }

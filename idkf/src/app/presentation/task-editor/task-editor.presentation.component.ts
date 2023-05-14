@@ -24,6 +24,7 @@ export class TaskEditorPresentationComponent implements OnInit {
     @Input() currentSubject: Subject | undefined | null;
     @Input() subjects: Subject[] | undefined | null;
     @Output() submitEventer: EventEmitter<Task>;
+    @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
 
     filteredOptions: Observable<string[]>;
     taskForm: FormGroup;

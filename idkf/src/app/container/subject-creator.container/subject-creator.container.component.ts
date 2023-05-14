@@ -6,6 +6,7 @@ import {
 } from '../../presentation/subject-editor/subject-editor.presentation.component';
 import {Subject} from '../../store/entities/subject/subject.model';
 import {createSubject} from '../../store/entities/subject/subject.actions';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-subject-creator-container',
@@ -20,5 +21,9 @@ export class SubjectCreatorContainerComponent {
 
     onSubmit(subject: Subject) {
         this.store.dispatch(createSubject({subject: subject}));
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }

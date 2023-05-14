@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Task} from '../../store/entities/task/task.model';
 import {selectFilteredTasks} from '../../store/entities/task/task.reducer';
 import {TasksPresentationComponent} from '../../presentation/tasks/tasks.presentation.component';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-subject-container',
@@ -18,5 +19,9 @@ export class SubjectContainerComponent {
 
     constructor(private store: Store) {
         this.tasks$ = this.store.select(selectFilteredTasks);
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }
