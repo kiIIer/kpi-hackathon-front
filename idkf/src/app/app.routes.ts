@@ -8,16 +8,18 @@ import {SubjectEditorContainerComponent} from './container/subject-editor.contai
 import {
     SubjectCreatorContainerComponent,
 } from './container/subject-creator.container/subject-creator.container.component';
+import {TaskCreatorContainerComponent} from './container/task-creator.container/task-creator.container.component';
 
 export const appRoutes: Routes = [
     // {path: '', redirectTo: '/login', pathMatch: 'full'},
     // {path: 'login', component: }
     {path: 'tasks', component: AllTasksContainerComponent},
     {path: 'subjects', component: SubjectsContainerComponent},
-    {path: 'subjects/:subjectId/tasks', component: SubjectContainerComponent},
-    {path: 'tasks/:taskId', component: TaskEditorContainerComponent},
-    {path: 'subjects/:subjectId/edit', component: SubjectEditorContainerComponent},
-    // {path: 'tasks/:taskId/edit', component: EditTaskComponent},
     {path: 'subjects/create', component: SubjectCreatorContainerComponent},
-    // {path: 'tasks/create', component: CreateTaskComponent},
+    {path: 'subjects/:subjectId/edit', component: SubjectEditorContainerComponent},
+    {path: 'subjects/:subjectId/tasks', component: SubjectContainerComponent},
+    {path: 'subject/:subjectId/tasks/create', component: TaskCreatorContainerComponent},
+    {path: 'tasks/create', component: TaskCreatorContainerComponent},
+    {path: 'subjects/:subjectId/tasks/:taskId/edit', component: TaskEditorContainerComponent},
+    // {path: 'subjects/:subjectId/tasks/:taskId', component: EditTaskComponent},
 ];

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Task} from '../../store/entities/task/task.model';
+import {Subject} from '../../store/entities/subject/subject.model';
 
 @Component({
     selector: 'idkf-task-editor-presentation',
@@ -11,6 +12,7 @@ import {Task} from '../../store/entities/task/task.model';
 })
 export class TaskEditorPresentationComponent {
     @Input() currentTask: Task | undefined | null;
+    @Input() currentSubject: Subject | undefined | null;
     @Output() submitEventer: EventEmitter<Task>;
 
     constructor() {
