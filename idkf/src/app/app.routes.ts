@@ -4,6 +4,7 @@ import {AllTasksContainerComponent} from './container/all-tasks.container/all-ta
 import {SubjectsContainerComponent} from './container/subjects.container/subjects.container.component';
 import {SubjectContainerComponent} from './container/subject.container/subject.container.component';
 import {TaskEditorContainerComponent} from './container/task-editor.container/task-editor.container.component';
+import {SubjectEditorContainerComponent} from './container/subject-editor.container/subject-editor.container.component';
 
 export const appRoutes: Routes = [
     // {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -12,7 +13,7 @@ export const appRoutes: Routes = [
     {path: 'subjects', component: SubjectsContainerComponent},
     {path: 'subjects/:subjectId/tasks', component: SubjectContainerComponent},
     {path: 'tasks/:taskId', component: TaskEditorContainerComponent},
-    {path: 'subjects/:subjectId/edit', component: TaskEditorContainerComponent},
+    {path: 'subjects/:subjectId/edit', component: SubjectEditorContainerComponent},
     // {path: 'tasks/:taskId/edit', component: EditTaskComponent},
     // {path: 'subjects/create', component: CreateSubjectComponent},
     // {path: 'tasks/create', component: CreateTaskComponent},
