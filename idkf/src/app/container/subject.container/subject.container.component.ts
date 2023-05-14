@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Task} from '../../store/entities/task/task.model';
-import {selectFilteredTasks, selectTasksBySubjectId} from '../../store/entities/task/task.reducer';
+import {selectFilteredTasks} from '../../store/entities/task/task.reducer';
 import {TasksPresentationComponent} from '../../presentation/tasks/tasks.presentation.component';
 
 @Component({
