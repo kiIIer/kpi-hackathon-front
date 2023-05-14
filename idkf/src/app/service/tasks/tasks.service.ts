@@ -36,6 +36,10 @@ export class TasksService {
     // createTask(newTask: Task): Observable<HttpResponse<Task>> {
     //     return this.http.post<Task>(this.baseUrl, newTask, {observe: 'response'});
     // }
+    // getTasksOfSubjectById(subjectId: number): Observable<HttpResponse<Task[]>> {
+    //     const url = `${this.baseUrl}?subjectId=${subjectId}`;
+    //     return this.http.get<Task[]>(url, { observe: 'response' });
+    // }
 
     // Get task by ID (mock implementation)
     getTaskById(id: number): Observable<HttpResponse<Task>> {
