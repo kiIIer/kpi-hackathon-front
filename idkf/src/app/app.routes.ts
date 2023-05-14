@@ -19,6 +19,7 @@ export const appRoutes: Routes = [
     {path: 'subjects/:subjectId/edit', component: SubjectEditorContainerComponent},
     {path: 'subjects/:subjectId/tasks', component: SubjectContainerComponent},
     {path: 'subject/:subjectId/tasks/create', component: TaskCreatorContainerComponent},
+    {path: 'tasks/create', component: TaskCreatorContainerComponent},
     {path: 'subjects/:subjectId/tasks/:taskId/edit', component: TaskEditorContainerComponent},
     // {path: 'subjects/:subjectId/tasks/:taskId', component: EditTaskComponent},
 ];
