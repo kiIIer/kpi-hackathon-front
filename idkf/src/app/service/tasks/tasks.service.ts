@@ -30,7 +30,7 @@ export class TasksService {
     }
 
     getTasks(): Observable<HttpResponse<Task[]>> {
-        return this.http.get<Task[]>(this.baseUrl, {observe: 'response'});
+       return this.http.get<Task[]>(this.baseUrl, {observe: 'response'});
     }
 
     createTask(newTask: Task): Observable<HttpResponse<Task>> {

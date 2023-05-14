@@ -5,44 +5,21 @@ import {Task} from '../../store/entities/task/task.model';
 import {NgForOf} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
     selector: 'idkf-tasks-presentation',
     standalone: true,
-    imports: [CommonModule, MatCardModule, NgForOf, MatIconModule, MatButtonModule],
+    imports: [CommonModule, MatCardModule, NgForOf, MatIconModule, MatButtonModule, MatMenuModule],
     templateUrl: './tasks.presentation.component.html',
     styleUrls: ['./tasks.presentation.component.scss'],
 })
 export class TasksPresentationComponent {
-    @Input() tasks: Task[] | null = [{
-        id: 1,
-        name: 'Системне програмування',
-        description: 'Курсова робота',
-        deadline: '2023-05-12T20:20:28.349Z',
-        maxGrade: 10,
-        status: 0,
-        subjectId: 1,
-    },
-        {
-            id: 2,
-            name: 'Інженерія програмного забезпечення',
-            description: 'Its like, not important',
-            deadline: '2023-05-13T22:12:28.349Z',
-            maxGrade: 9,
-            status: 1,
-            subjectId: 1,
-        },
-        {
-            id: 3,
-            name: 'Архітектра компютерів',
-            description: 'Лабораторна робота № 5',
-            deadline: '2023-05-20T15:12:28.349Z',
-            maxGrade: 6,
-            status: 1,
-            subjectId: 1,
-        },
-    ];
+    @Input() tasks: Task[] | null = [];
     @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
+    @Output() updateEventer: EventEmitter<Task> = new EventEmitter<Task>();
+
+    status_l = [{color: 'red', icon: 'clear'}, {color: 'green', icon: 'done'}, {color: 'purple', icon: 'schedule'}];
 
     isDeadlineApproaching(deadline: string): boolean {
         const TWO_DAYS_IN_MS = 2 * 24 * 60 * 60 * 1000;
@@ -56,10 +33,15 @@ export class TasksPresentationComponent {
         const deadlineDate = new Date(deadline);
         return deadlineDate.getTime() < Date.now();
     }
+
     getFormattedDate(deadline: string): string {
         const taskDeadline = new Date(deadline);
         const month = taskDeadline.getMonth() + 1;
         const day = taskDeadline.getDate();
         return `${day}/${month}`;
+    }
+
+    changeTask(task: Task, status: number): Task{
+        return ({...task, status: status})
     }
 }
