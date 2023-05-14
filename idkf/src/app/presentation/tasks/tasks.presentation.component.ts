@@ -13,7 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
     styleUrls: ['./tasks.presentation.component.scss'],
 })
 export class TasksPresentationComponent {
-    @Input() tasks: Task[] = [{
+    @Input() tasks: Task[] | null = [{
         id: 1,
         name: 'Системне програмування',
         description: 'Курсова робота',
