@@ -5,7 +5,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {Subject} from "../../store/entities/subject/subject.model";
 
 @Component({
-  selector: 'idkf-subjects',
+  selector: 'idkf-subjects-presentation',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatIconModule],
   templateUrl: './subjects.presentation.component.html',
@@ -13,7 +13,7 @@ import {Subject} from "../../store/entities/subject/subject.model";
 })
 
 export class SubjectsPresentationComponent {
-  @Input() subjects: Subject[] = [{
+  @Input() subjects: Subject[] | null = [{
     id: 1,
     name: 'Системне програмування',
     description: 'Вчитель: Порєв В. М., залік або автомат',
