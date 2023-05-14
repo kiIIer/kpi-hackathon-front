@@ -13,6 +13,5 @@ import {checkAuth} from '../../store/entities/auth/auth.actions';
 })
 export class MainContainerComponent {
     constructor(private store: Store) {
-        this.store.dispatch(checkAuth());
     }
 }
