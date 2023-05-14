@@ -16,10 +16,11 @@ import {
 } from './store/entities/subject/subject.actions';
 import {createTask, deleteTask, loadAllTasks, updateTask} from './store/entities/task/task.actions';
 import {goToUrl} from './store/router/router.action';
+import {MainContainerComponent} from './container/main.container/main.container.component';
 
 @Component({
     standalone: true,
-    imports: [RouterModule, MatProgressSpinnerModule, MainPageComponent, MatButtonModule],
+    imports: [RouterModule, MatProgressSpinnerModule, MainPageComponent, MatButtonModule, MainContainerComponent],
     selector: 'idkf-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],

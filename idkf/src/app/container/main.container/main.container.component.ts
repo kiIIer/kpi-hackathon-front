@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'idkf-main.container',
+  selector: 'idkf-main-container',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './main.container.component.html',
