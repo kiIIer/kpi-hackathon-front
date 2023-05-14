@@ -6,6 +6,8 @@ import {updateTask} from '../../store/entities/task/task.actions';
 import {Observable} from 'rxjs';
 import {selectCurrentTask} from '../../store/entities/task/task.reducer';
 import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
+import {Subject} from '../../store/entities/subject/subject.model';
+import {selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
 
 @Component({
     selector: 'idkf-task-editor-container',
@@ -15,11 +17,12 @@ import {TaskEditorPresentationComponent} from '../../presentation/task-editor/ta
     styleUrls: ['./task-editor.container.component.css'],
 })
 export class TaskEditorContainerComponent {
-
+    currentSubject$: Observable<Subject | undefined>;
     currentTask$: Observable<Task | undefined>;
 
     constructor(private store: Store) {
         this.currentTask$ = this.store.select(selectCurrentTask);
+        this.currentSubject$ = this.store.select(selectCurrentSubject);
     }
 
     onSubmit(task: Task) {

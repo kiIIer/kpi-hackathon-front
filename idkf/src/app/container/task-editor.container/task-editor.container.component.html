@@ -1,3 +1,4 @@
 <idkf-task-editor-presentation
+        [currentSubject]="currentSubject$ | async"
         [currentTask]="currentTask$ | async"
         (submitEventer)="onSubmit($event)"></idkf-task-editor-presentation>
