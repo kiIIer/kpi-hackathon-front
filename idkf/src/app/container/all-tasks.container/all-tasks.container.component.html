@@ -1,1 +1,3 @@
-<idkf-tasks-presentation [tasks]="allTasks$ | async"></idkf-tasks-presentation>
+<idkf-tasks-presentation [tasks]="allTasks$ | async" (navEventer)="go($event)"
+                         (updateEventer)="update($event)"
+></idkf-tasks-presentation>

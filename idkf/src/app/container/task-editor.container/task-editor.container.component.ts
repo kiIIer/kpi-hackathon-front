@@ -10,6 +10,7 @@ import {Subject} from '../../store/entities/subject/subject.model';
 import {selectAll, selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
 import {selectRouteParams} from '../../store/router/router.selectors';
 import {map} from 'rxjs/operators';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-task-editor-container',
@@ -19,17 +20,21 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./task-editor.container.component.css'],
 })
 export class TaskEditorContainerComponent {
-    currentSubjectId$: Observable<number | undefined>;
+    currentSubject$: Observable<Subject | undefined>;
     subjects$: Observable<Subject[]>;
     currentTask$: Observable<Task | undefined>;
 
     constructor(private store: Store) {
         this.currentTask$ = this.store.select(selectCurrentTask);
-        this.currentSubjectId$ = this.store.select(selectRouteParams).pipe(map((params) => params['subjectId']));
+        this.currentSubject$ = this.store.select(selectCurrentSubject);
         this.subjects$ = this.store.select(selectAll);
     }
 
     onSubmit(task: Task) {
         this.store.dispatch(updateTask({task: task}));
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
     }
 }

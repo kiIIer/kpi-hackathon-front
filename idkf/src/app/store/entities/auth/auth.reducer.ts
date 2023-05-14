@@ -1,7 +1,7 @@
 import {EntityState} from '@ngrx/entity';
 import {Subject} from '../subject/subject.model';
 import {User} from '@auth0/auth0-angular';
-import {createFeature, createReducer, on} from '@ngrx/store';
+import {createFeature, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
 import {loginComplete, logoutComplete} from './auth.actions';
 import {adapter, reducer, subjectsFeatureKey} from '../subject/subject.reducer';
 
@@ -33,3 +33,17 @@ export const authFeature = createFeature({
     name: authFeatureKey,
     reducer,
 });
+
+export const selectAppAuthState = createFeatureSelector<AppAuthState>('appAuth');
+
+// Create a selector to select the user
+export const selectUser = createSelector(
+    selectAppAuthState,
+    (state: AppAuthState) => !state ? null : state.user,
+);
+
+// Create a selector to select the token
+export const selectToken = createSelector(
+    selectAppAuthState,
+    (state: AppAuthState) => state.token,
+);

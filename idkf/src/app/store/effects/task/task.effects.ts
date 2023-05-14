@@ -5,12 +5,12 @@ import {
     createTask,
     deleteTask,
     errorTasks, getTasksBySubjectId,
-    loadAllTasks,
+    loadAllTasks, loadTaskById,
     TaskActions,
     updateTask,
 } from '../../entities/task/task.actions';
 import {map, mergeMap} from 'rxjs/operators';
-import {deleteSubject, errorSubjects, SubjectActions} from '../../entities/subject/subject.actions';
+import {deleteSubject, errorSubjects, loadSubjectById, SubjectActions} from '../../entities/subject/subject.actions';
 
 
 @Injectable()
@@ -68,6 +68,18 @@ export class TaskEffects {
                 this.tasksService.getTasksOfSubjectById(action.subjectId).pipe(
                     map((response) => response.ok
                         ? TaskActions.addTasks({tasks: response.body!})
+                        : errorTasks({error: response.statusText})),
+                ),
+            ),
+        ),
+    );
+
+    oadSubjectById$ = createEffect(() => this.actions$.pipe(
+            ofType(loadTaskById),
+            mergeMap((action) =>
+                this.tasksService.getTaskById(action.id).pipe(
+                    map((response) => response.ok
+                        ? TaskActions.addTask({task: response.body!})
                         : errorTasks({error: response.statusText})),
                 ),
             ),

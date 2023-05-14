@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Subject} from '../../store/entities/subject/subject.model';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -14,14 +14,19 @@ import {MatButtonModule} from '@angular/material/button';
     templateUrl: './subject-editor.presentation.component.html',
     styleUrls: ['./subject-editor.presentation.component.css'],
 })
-export class SubjectEditorPresentationComponent {
+export class SubjectEditorPresentationComponent implements OnInit {
     @Input() currentSubject: Subject | undefined | null;
     @Output() submitEventer: EventEmitter<Subject>;
+    @Output() navEventer: EventEmitter<string> = new EventEmitter<string>();
 
     subjectForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder) {
         this.submitEventer = new EventEmitter<Subject>();
+        this.subjectForm = formBuilder.group({});
+    }
+
+    ngOnInit() {
         this.subjectForm = this.formBuilder.group({
             ['name']: [this.currentSubject ? this.currentSubject.name : '', Validators.required],
             ['description']: [this.currentSubject ? this.currentSubject.description : ''],

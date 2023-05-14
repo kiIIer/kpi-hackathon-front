@@ -23,9 +23,11 @@ import {
 } from './store/entities/task/task.actions';
 import {MainContainerComponent} from './container/main.container/main.container.component';
 import {goToUrl} from './store/router/router.action';
-import {login, logout} from './store/entities/auth/auth.actions';
-import {SubjectEditorContainerComponent} from "./container/subject-editor.container/subject-editor.container.component";
 import {TaskEditorContainerComponent} from "./container/task-editor.container/task-editor.container.component";
+import {checkAuth, login, logout} from './store/entities/auth/auth.actions';
+import {SubjectEditorContainerComponent} from './container/subject-editor.container/subject-editor.container.component';
+import {selectUser} from './store/entities/auth/auth.reducer';
+
 
 @Component({
     standalone: true,
@@ -38,9 +40,9 @@ export class AppComponent {
     title = 'idkf';
 
     constructor(public auth: AuthService, private store: Store, private router: Router) {
-        this.store.dispatch(initSubjects());
-        this.store.dispatch(loadAllTasks());
+        this.store.dispatch(checkAuth());
     }
+
 
     li() {
         this.store.dispatch(login());

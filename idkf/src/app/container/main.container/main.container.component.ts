@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {MainPageComponent} from '../../presentation/main-page/main-page.component';
-import {checkAuth} from '../../store/entities/auth/auth.actions';
+import {checkAuth, logout} from '../../store/entities/auth/auth.actions';
+import {goToUrl} from '../../store/router/router.action';
 
 @Component({
     selector: 'idkf-main-container',
@@ -13,6 +14,13 @@ import {checkAuth} from '../../store/entities/auth/auth.actions';
 })
 export class MainContainerComponent {
     constructor(private store: Store) {
-        this.store.dispatch(checkAuth());
+    }
+
+    go(url: string) {
+        this.store.dispatch(goToUrl({url: url}));
+    }
+
+    logout() {
+        this.store.dispatch(logout());
     }
 }
