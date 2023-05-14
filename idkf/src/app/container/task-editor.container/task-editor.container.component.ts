@@ -5,11 +5,12 @@ import {Task} from '../../store/entities/task/task.model';
 import {updateTask} from '../../store/entities/task/task.actions';
 import {Observable} from 'rxjs';
 import {selectCurrentTask} from '../../store/entities/task/task.reducer';
+import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
 
 @Component({
     selector: 'idkf-task-editor-container',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TaskEditorPresentationComponent],
     templateUrl: './task-editor.container.component.html',
     styleUrls: ['./task-editor.container.component.css'],
 })
