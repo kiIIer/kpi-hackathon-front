@@ -21,9 +21,7 @@ export class AllTasksGuard implements CanActivate {
     check(): Observable<boolean> {
         return this.store.select(selectAll).pipe(
             tap((tasks) => {
-                if (tasks.length == 0) {
-                    this.store.dispatch(loadAllTasks());
-                }
+                this.store.dispatch(loadAllTasks());
             }),
             filter((tasks) => tasks.length != 0),
             map(() => true),
