@@ -1,2 +1,61 @@
-<p>{{currentSubject | json}}</p>
-<p>{{currentTask | json}}</p>
+<mat-card>
+    <form [formGroup]="taskForm" (submit)="submit()">
+        <mat-card-header>
+            <mat-card-title>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <textarea matInput
+                              cdkTextareaAutosize
+                              formControlName="name"
+                              required></textarea>
+                    <mat-error *ngIf="taskForm!.controls['name'].touched && taskForm!.controls['name'].invalid">
+                        <span *ngIf="taskForm!.controls['name'].errors!['required']">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput
+                          cdkTextareaAutosize
+                          formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Max points</mat-label>
+                <input matInput type="number" formControlName="maxGrade">
+                <mat-error
+                        *ngIf="taskForm!.controls['maxGrade'].touched && taskForm!.controls['maxGrade'].invalid">
+                    <span *ngIf="taskForm!.controls['maxGrade'].errors!['required']">This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Deadline</mat-label>
+                <input matInput formControlName="deadline">
+                <mat-error
+                        *ngIf="taskForm!.controls['deadline'].touched && taskForm!.controls['deadline'].invalid">
+                    <span *ngIf="taskForm!.controls['deadline'].errors!['required']">This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Subject name</mat-label>
+                <input
+                        type="text"
+                        matIconPrefix
+                        matInput
+                        formControlName="subjectName"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let name of filteredOptions | async" [value]="name">
+                        {{name}}</mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions class="actions">
+            <button mat-raised-button
+                    color="primary"
+                    type="submit">Save
+            </button>
+        </mat-card-actions>
+    </form>
+</mat-card>

@@ -5,8 +5,10 @@ import {createTask} from '../../store/entities/task/task.actions';
 import {Task} from '../../store/entities/task/task.model';
 import {Observable} from 'rxjs';
 import {Subject} from '../../store/entities/subject/subject.model';
-import {selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
+import {selectAll, selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
 import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
+import {selectRouteParams} from '../../store/router/router.selectors';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'idkf-task-creator-container',
@@ -16,10 +18,10 @@ import {TaskEditorPresentationComponent} from '../../presentation/task-editor/ta
     styleUrls: ['./task-creator.container.component.css'],
 })
 export class TaskCreatorContainerComponent {
-    currentSubject$: Observable<Subject | undefined>;
+    subjects$: Observable<Subject[]>;
 
     constructor(private store: Store) {
-        this.currentSubject$ = this.store.select(selectCurrentSubject);
+        this.subjects$ = this.store.select(selectAll);
     }
 
     onSubmit(task: Task) {

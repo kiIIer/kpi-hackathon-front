@@ -7,7 +7,9 @@ import {Observable} from 'rxjs';
 import {selectCurrentTask} from '../../store/entities/task/task.reducer';
 import {TaskEditorPresentationComponent} from '../../presentation/task-editor/task-editor.presentation.component';
 import {Subject} from '../../store/entities/subject/subject.model';
-import {selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
+import {selectAll, selectCurrentSubject} from '../../store/entities/subject/subject.reducer';
+import {selectRouteParams} from '../../store/router/router.selectors';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'idkf-task-editor-container',
@@ -17,12 +19,14 @@ import {selectCurrentSubject} from '../../store/entities/subject/subject.reducer
     styleUrls: ['./task-editor.container.component.css'],
 })
 export class TaskEditorContainerComponent {
-    currentSubject$: Observable<Subject | undefined>;
+    currentSubjectId$: Observable<number | undefined>;
+    subjects$: Observable<Subject[]>;
     currentTask$: Observable<Task | undefined>;
 
     constructor(private store: Store) {
         this.currentTask$ = this.store.select(selectCurrentTask);
-        this.currentSubject$ = this.store.select(selectCurrentSubject);
+        this.currentSubjectId$ = this.store.select(selectRouteParams).pipe(map((params) => params['subjectId']));
+        this.subjects$ = this.store.select(selectAll);
     }
 
     onSubmit(task: Task) {
