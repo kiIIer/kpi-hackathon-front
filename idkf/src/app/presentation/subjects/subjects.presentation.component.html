@@ -5,7 +5,7 @@
     <mat-card-content class="card-container">
         <div class="name">{{subject.name}}</div>
         <div class="description">{{subject.description}}</div>
-        <div class="maxGrade">{{subject.maxGrade}}</div>
+        <div class="grade">{{subject.grade}}</div>
         <div class="deadline">{{getFormattedDate(subject.deadline)}}</div>
         <button mat-icon-button (click)="navEventer.emit('/subjects/' + subject.id + '/edit')">
             <mat-icon>edit</mat-icon>
